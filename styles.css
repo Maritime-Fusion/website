@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .logo {
+    width: 100px;
+    margin: 20px auto;
+  }
+  
+  .title {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  
+  .subtitle {
+    font-size: 1.2em;
+    margin: 20px 0;
+  }
+  
+  .contact {
+    margin: 20px 0;
+    font-size: 1em;
+  }
+  
+  .flag {
+    max-width: 500px;
+    margin: 20px auto;
+  }
+  
+  footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: gray;
+  }
+  
