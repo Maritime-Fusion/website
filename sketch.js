@@ -143,8 +143,16 @@ function windowResized() {
 }
 
 function resizeCanvasTo75Percent() {
-  resizeCanvas(windowWidth * 0.75, windowHeight * 0.75);
-}
+    const maxAspectRatio = 16 / 9; // For widescreen-like behavior
+    const canvasWidth = windowWidth * 0.75;
+    let canvasHeight = canvasWidth / maxAspectRatio;
+  
+    // Ensure the canvas height doesn't exceed 75% of the window height
+    canvasHeight = Math.min(canvasHeight, windowHeight * 0.75);
+  
+    resizeCanvas(canvasWidth, canvasHeight);
+  }
+  
 
 function startShootingStar() {
   if (!animating) {
