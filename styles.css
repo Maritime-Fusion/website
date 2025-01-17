@@ -58,12 +58,10 @@ canvas {
     pointer-events: none;  /* Click-through the canvas */
 }
 
-/* Example button styling */
 .click-me {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative; /* Position it relative to its normal flow in the document */
+    margin: 20px auto; /* Center it horizontally and add margin to the bottom */
+    display: inline-block; /* Ensures the button is sized based on content */
     background-color: #007BFF; /* bright blue */
     color: white;
     border: none;
@@ -73,10 +71,8 @@ canvas {
     font-size: 1em;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
-    z-index: 99999; /* Ensure it's above page elements and visible above canvas */
 }
 
 .click-me:hover {
     background-color: #0056b3;
 }
-  

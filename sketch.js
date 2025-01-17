@@ -21,11 +21,11 @@ function draw() {
 
   if (animating) {
     // Increase parameter (controls how far along the path we are)
-    t += 0.01;
+    t += 0.02;
 
     // Calculate star's position (circular path around screen center)
     let angle = TWO_PI * t;
-    let radius = 120 * t;  // Moves outward as 't' increases
+    let radius = 90 * t;  // Moves outward as 't' increases
     let x = width / 2 + radius * cos(angle);
     let y = height / 2 + radius * sin(angle);
 
@@ -63,7 +63,7 @@ function draw() {
     }
 
     // End the animation once t has passed a certain threshold
-    if (t > 3) {
+    if (t > 5) {
       animating = false;
       t = 0;
       tailPositions = [];
