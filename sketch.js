@@ -28,7 +28,7 @@ function draw() {
     let baseAngle = TWO_PI * t * 1.2; 
 
     // Add random rotation/skew for the ellipses over time
-    ellipseRotation = map(noise(t * 0.2), 0, 1, -PI / 6, PI / 6);
+    ellipseRotation = map(noise(t * 0.5), 0, 1, -PI / 6, PI / 6);
 
     // Slight random offset in angle from Perlin noise, scaled by noiseAmount
     let angleOffset = map(noise(t * 0.5), 0, 1, -0.1, 0.1) * noiseAmount;
