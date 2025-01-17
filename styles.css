@@ -8,13 +8,14 @@ body {
 img {
     max-width: 100%;
     height: auto;
-    background-color: transparent;
+    background-color: white;
 }
 
 .logo {
-    width: 50%; /* Set width to 100% to fill the screen */
+    width: 75%; /* Set width to 75% of the screen */
     height: auto; /* Maintain aspect ratio */
     margin: 20px auto;
+    background-color: white; /* Set background color to white */
 }
 
 .title {
@@ -34,7 +35,8 @@ img {
 }
 
 .flag {
-    max-width: 500px;
+    width: 50%; /* Set width to 50% of the screen */
+    height: auto; /* Maintain aspect ratio */
     margin: 20px auto;
 }
 
