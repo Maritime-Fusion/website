@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Maritime Fusion</title>
-  <link rel="stylesheet" href="styles.css">
+  <!-- Link to your external CSS file (styles.css) -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Your existing content -->
   <img src="logo.png" alt="Maritime Fusion Logo" class="logo">
   <div class="subtitle">Compact HTS tokamaks for submarines and aircraft carriers</div>
   <img src="flag.png" alt="USA Flag" class="flag">
   <div class="contact">Contact: jason@maritimefusion.com</div>
-  <footer>
-    Backed by Y Combinator
-  </footer>
+  <footer>Backed by Y Combinator</footer>
+
+  <!-- Button to trigger the shooting star animation -->
+  <button class="click-me" onclick="startShootingStar()">Click to see plasma</button>
+
+  <!-- p5.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+  <!-- Your custom p5 sketch -->
+  <script src="sketch.js"></script>
 </body>
 </html>
