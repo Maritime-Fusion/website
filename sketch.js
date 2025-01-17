@@ -19,88 +19,99 @@ function setup() {
 }
 
 function draw() {
-    clear();
-  
-    if (animating) {
-      // Increment parameter t
-      t += 0.02;
-  
-      // Base angle for elliptical orbit
-      let baseAngle = TWO_PI * t * 1.2;
-  
-      // Randomize Z-axis rotation using Perlin noise
-      ellipseRotation = map(noise(t * 0.5), 0, 1, -PI / 6, PI / 6);
-  
-      // Slight random offset in angle from Perlin noise, scaled by noiseAmount
-      let angleOffset = map(noise(t * 0.5), 0, 1, -0.1, 0.1) * noiseAmount;
-      let angle = baseAngle + angleOffset;
-  
-      // Add noise-based jitter to the ellipse radii, scaled by noiseAmount
-      let majorAxisNoise = map(noise(1000 + t * 0.5), 0, 1, -6, 6) * noiseAmount;
-      let minorAxisNoise = map(noise(2000 + t * 0.5), 0, 1, -3, 3) * noiseAmount;
-  
-      // Spiral outward over time, plus jitter
-      let majorAxis = 0.2 * width + 20 * t + majorAxisNoise;
-      let minorAxis = 0.1 * height + 10 * t + minorAxisNoise;
-  
-      // Ellipse center
-      let cx = width / 2;
-      let cy = height / 2;
-  
-      // Compute the star's position
-      let x = cx + majorAxis * cos(angle);
-      let y = cy + minorAxis * sin(angle);
-  
-      // We'll use scaleVal to simulate a simple 3D perspective
-      let scaleVal = map(sin(angle), -1, 1, 0.5, 1.5);
-  
-      // We'll also shift color based on angle
-      let hueVal = map(sin(angle), -1, 1, 200, 320);
-  
-      // Store the new position & scaleVal & hueVal
-      tailPositions.push({ x, y, scaleVal, hueVal });
-  
-      // Limit tail length
-      if (tailPositions.length > 60) {
-        tailPositions.shift();
-      }
-  
-      // Draw tail as a continuous shape
-      beginShape();
-      noFill();
-      for (let i = 0; i < tailPositions.length; i++) {
-        let age = i / (tailPositions.length - 1); // 0..1
-        let alphaVal = lerp(255, 0, age);
-  
-        let tailHue = tailPositions[i].hueVal + age * 20;
-        if (tailHue > 360) tailHue -= 360;
-  
-        stroke(tailHue, 100, 100, alphaVal);
-        strokeWeight(lerp(8, 2, age)); // Gradual thinning of the tail
-        curveVertex(tailPositions[i].x, tailPositions[i].y);
-      }
-      endShape();
-  
-      // Draw the main star (head) last
-      fill(hueVal, 100, 100, 230);
-      noStroke();
-      let headSize = 30 * scaleVal;
-  
+  clear();
+
+  if (animating) {
+    // Increment parameter t
+    t += 0.02;
+
+    // Base angle for elliptical orbit
+    let baseAngle = TWO_PI * t * 1.2;
+
+    // Randomize Z-axis rotation using Perlin noise
+    ellipseRotation = map(noise(t * 0.5), 0, 1, -PI / 6, PI / 6);
+
+    // Slight random offset in angle from Perlin noise, scaled by noiseAmount
+    let angleOffset = map(noise(t * 0.5), 0, 1, -0.1, 0.1) * noiseAmount;
+    let angle = baseAngle + angleOffset;
+
+    // Add noise-based jitter to the ellipse radii, scaled by noiseAmount
+    let majorAxisNoise = map(noise(1000 + t * 0.5), 0, 1, -6, 6) * noiseAmount;
+    let minorAxisNoise = map(noise(2000 + t * 0.5), 0, 1, -3, 3) * noiseAmount;
+
+    // Spiral outward over time, plus jitter
+    let majorAxis = 0.2 * width + 20 * t + majorAxisNoise;
+    let minorAxis = 0.1 * height + 10 * t + minorAxisNoise;
+
+    // Ellipse center
+    let cx = width / 2;
+    let cy = height / 2;
+
+    // Compute the star's position
+    let x = cx + majorAxis * cos(angle);
+    let y = cy + minorAxis * sin(angle);
+
+    // We'll use scaleVal to simulate a simple 3D perspective
+    // (the star gets bigger/smaller as it swings around)
+    let scaleVal = map(sin(angle), -1, 1, 0.5, 1.5);
+
+    // We'll also shift color based on angle.
+    // For example, let's cycle hue from 200..320 (roughly blue..pink/purple).
+    let hueVal = map(sin(angle), -1, 1, 200, 320);
+
+    // Store the new position & scaleVal & hueVal
+    tailPositions.push({ x, y, scaleVal, hueVal });
+
+    // Limit tail length
+    if (tailPositions.length > 60) {
+      tailPositions.shift();
+    }
+
+    // Draw tail from newest to oldest
+    for (let i = tailPositions.length - 1; i >= 0; i--) {
+      let age = (tailPositions.length - 1) - i;
+      let factor = age / (tailPositions.length - 1); // 0..1
+
+      // Fade out & shrink
+      let alphaVal = lerp(255, 0, factor);
+      let sizeVal = lerp(20, 3, factor);
+
+      // Multiply by that star's scaleVal
+      let finalSize = sizeVal * tailPositions[i].scaleVal;
+
+      // Slightly shift the hue for older tail bits
+      let tailHue = tailPositions[i].hueVal + factor * 20;
+      if (tailHue > 360) tailHue -= 360;
+
+      fill(tailHue, 100, 100, alphaVal);
+
+      // Apply Z-axis rotation to tail ellipses
       push();
-      translate(x, y);
+      translate(tailPositions[i].x, tailPositions[i].y);
       rotate(ellipseRotation); // Only Z-axis rotation
-      ellipse(0, 0, headSize, headSize * 0.6);
+      ellipse(0, 0, finalSize, finalSize * 0.6);
       pop();
-  
-      // Stop animating after a while
-      if (t > 5) {
-        animating = false;
-        t = 0;
-        tailPositions = [];
-      }
+    }
+
+    // Draw the main star (head) last
+    // Use the current hueVal and a constant alpha
+    fill(hueVal, 100, 100, 230);
+    let headSize = 30 * scaleVal;
+
+    push();
+    translate(x, y);
+    rotate(ellipseRotation); // Only Z-axis rotation
+    ellipse(0, 0, headSize, headSize * 0.6);
+    pop();
+
+    // Stop animating after a while
+    if (t > 5) {
+      animating = false;
+      t = 0;
+      tailPositions = [];
     }
   }
-  
+}
 
 function windowResized() {
   resizeCanvasTo75Percent();
