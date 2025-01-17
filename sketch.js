@@ -7,9 +7,11 @@
 let animating = false;    // Are we currently animating?
 let t = 0;                // A parameter from 0..1 to control the base animation
 let tailPositions = [];   // Store previous star positions for the tail
+let noiseAmount = 1;      // Single parameter to control noise intensity
+let ellipseRotation = 0;  // Rotation/skew for the ellipses
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  resizeCanvasTo75Percent();
   // Switch to HSB color mode so we can smoothly cycle hue
   colorMode(HSB, 360, 100, 100, 255);
   noStroke();
@@ -25,19 +27,21 @@ function draw() {
     // Base angle for elliptical orbit
     let baseAngle = TWO_PI * t * 1.2; 
 
-    // Slight random offset in angle from Perlin noise
-    // noise(...) => [0..1], map(...) => [-0.1..0.1]
-    let angleOffset = map(noise(t * 0.5), 0, 1, -0.1, 0.1);
+    // Add random rotation/skew for the ellipses over time
+    ellipseRotation = map(noise(t * 0.2), 0, 1, -PI / 6, PI / 6);
+
+    // Slight random offset in angle from Perlin noise, scaled by noiseAmount
+    let angleOffset = map(noise(t * 0.5), 0, 1, -0.1, 0.1) * noiseAmount;
     // Final angle
     let angle = baseAngle + angleOffset;
 
-    // Add noise-based jitter to the ellipse radii
-    let majorAxisNoise = map(noise(1000 + t * 0.5), 0, 1, -6, 6);
-    let minorAxisNoise = map(noise(2000 + t * 0.5), 0, 1, -3, 3);
+    // Add noise-based jitter to the ellipse radii, scaled by noiseAmount
+    let majorAxisNoise = map(noise(1000 + t * 0.5), 0, 1, -6, 6) * noiseAmount;
+    let minorAxisNoise = map(noise(2000 + t * 0.5), 0, 1, -3, 3) * noiseAmount;
 
     // Spiral outward over time, plus jitter
-    let majorAxis = 150 + 20 * t + majorAxisNoise;
-    let minorAxis =  60 + 10 * t + minorAxisNoise;
+    let majorAxis = 0.2 * width + 20 * t + majorAxisNoise;
+    let minorAxis =  0.1 * height + 10 * t + minorAxisNoise;
 
     // Ellipse center
     let cx = width / 2;
@@ -82,14 +86,25 @@ function draw() {
       if (tailHue > 360) tailHue -= 360;
 
       fill(tailHue, 100, 100, alphaVal);
-      ellipse(tailPositions[i].x, tailPositions[i].y, finalSize, finalSize);
+
+      // Apply rotation to tail ellipses
+      push();
+      translate(tailPositions[i].x, tailPositions[i].y);
+      rotate(ellipseRotation);
+      ellipse(0, 0, finalSize, finalSize * 0.6);
+      pop();
     }
 
     // Draw the main star (head) last 
     // We'll use the current hueVal and a constant alpha
     fill(hueVal, 100, 100, 230);
     let headSize = 30 * scaleVal;
-    ellipse(x, y, headSize, headSize);
+
+    push();
+    translate(x, y);
+    rotate(ellipseRotation);
+    ellipse(0, 0, headSize, headSize * 0.6);
+    pop();
 
     // Stop animating after a while
     if (t > 5) {
@@ -101,7 +116,11 @@ function draw() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  resizeCanvasTo75Percent();
+}
+
+function resizeCanvasTo75Percent() {
+  resizeCanvas(windowWidth * 0.75, windowHeight * 0.75);
 }
 
 /**
