@@ -3,42 +3,41 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-  }
-  
-  img {
+}
+
+img {
     max-width: 100%;
     height: auto;
-  }
-  
-  .logo {
-    width: 100px;
+}
+
+.logo {
+    width: 200px; /* Updated width */
     margin: 20px auto;
-  }
-  
-  .title {
+}
+
+.title {
     font-size: 2em;
     font-weight: bold;
     margin: 20px 0;
-  }
-  
-  .subtitle {
+}
+
+.subtitle {
     font-size: 1.2em;
     margin: 20px 0;
-  }
-  
-  .contact {
+}
+
+.contact {
     margin: 20px 0;
     font-size: 1em;
-  }
-  
-  .flag {
+}
+
+.flag {
     max-width: 500px;
     margin: 20px auto;
-  }
-  
-  footer {
+}
+
+footer {
     margin-top: 40px;
     font-size: 0.9em;
     color: gray;
-  }
-  
+}
