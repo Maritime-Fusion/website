@@ -11,7 +11,7 @@ img {
 }
 
 .logo {
-    width: 100%; /* Set width to 100% to fill the screen */
+    width: 50%; /* Set width to 100% to fill the screen */
     height: auto; /* Maintain aspect ratio */
     margin: 20px auto;
 }
