@@ -59,11 +59,10 @@ canvas {
 }
 
 .click-me {
-    position: relative; /* Position it relative to its normal flow in the document */
-    margin: 20px auto; /* Center it horizontally and add margin to the bottom */
     display: inline-block; /* Ensures the button is sized based on content */
-    background-color: #007BFF; /* bright blue */
-    color: white;
+    background-color: gray; /* bright blue */
+    color: black;
+    margin: 20px auto;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
