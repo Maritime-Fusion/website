@@ -1,7 +1,8 @@
 /**
  * sketch.js
- * "Shooting star" with elliptical motion, Perlin noise jitter, 
+ * "Shooting star" with elliptical motion, Perlin noise jitter,
  * and color shifting in pink/purple/blue range.
+ * Z-axis rotation is dynamic; 3D tilt remains constant.
  */
 
 let animating = false;    // Are we currently animating?
@@ -25,14 +26,13 @@ function draw() {
     t += 0.02;
 
     // Base angle for elliptical orbit
-    let baseAngle = TWO_PI * t * 1.2; 
+    let baseAngle = TWO_PI * t * 1.2;
 
-    // Add random rotation/skew for the ellipses over time
+    // Randomize Z-axis rotation using Perlin noise
     ellipseRotation = map(noise(t * 0.5), 0, 1, -PI / 6, PI / 6);
 
     // Slight random offset in angle from Perlin noise, scaled by noiseAmount
     let angleOffset = map(noise(t * 0.5), 0, 1, -0.1, 0.1) * noiseAmount;
-    // Final angle
     let angle = baseAngle + angleOffset;
 
     // Add noise-based jitter to the ellipse radii, scaled by noiseAmount
@@ -41,7 +41,7 @@ function draw() {
 
     // Spiral outward over time, plus jitter
     let majorAxis = 0.2 * width + 20 * t + majorAxisNoise;
-    let minorAxis =  0.1 * height + 10 * t + minorAxisNoise;
+    let minorAxis = 0.1 * height + 10 * t + minorAxisNoise;
 
     // Ellipse center
     let cx = width / 2;
@@ -55,7 +55,7 @@ function draw() {
     // (the star gets bigger/smaller as it swings around)
     let scaleVal = map(sin(angle), -1, 1, 0.5, 1.5);
 
-    // We'll also shift color based on angle. 
+    // We'll also shift color based on angle.
     // For example, let's cycle hue from 200..320 (roughly blue..pink/purple).
     let hueVal = map(sin(angle), -1, 1, 200, 320);
 
@@ -79,30 +79,28 @@ function draw() {
       // Multiply by that star's scaleVal
       let finalSize = sizeVal * tailPositions[i].scaleVal;
 
-      // We'll also slightly shift the hue based on factor, if you like:
-      // e.g. older tail bits get a slightly different hue
-      let tailHue = tailPositions[i].hueVal + factor * 20; 
-      // Then wrap around if needed (HSB wraps hue at 360)
+      // Slightly shift the hue for older tail bits
+      let tailHue = tailPositions[i].hueVal + factor * 20;
       if (tailHue > 360) tailHue -= 360;
 
       fill(tailHue, 100, 100, alphaVal);
 
-      // Apply rotation to tail ellipses
+      // Apply Z-axis rotation to tail ellipses
       push();
       translate(tailPositions[i].x, tailPositions[i].y);
-      rotate(ellipseRotation);
+      rotate(ellipseRotation); // Only Z-axis rotation
       ellipse(0, 0, finalSize, finalSize * 0.6);
       pop();
     }
 
-    // Draw the main star (head) last 
-    // We'll use the current hueVal and a constant alpha
+    // Draw the main star (head) last
+    // Use the current hueVal and a constant alpha
     fill(hueVal, 100, 100, 230);
     let headSize = 30 * scaleVal;
 
     push();
     translate(x, y);
-    rotate(ellipseRotation);
+    rotate(ellipseRotation); // Only Z-axis rotation
     ellipse(0, 0, headSize, headSize * 0.6);
     pop();
 
