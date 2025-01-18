@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Optional, prevents horizontal scroll if large elements exist */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    background-color: white;
+}
+
+.logo {
+    width: 75%; /* Set width to 75% of the screen */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px auto;
+    background-color: white; /* Set background color to white */
+}
+
+.title {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.contact {
+    margin: 20px 0;
+    font-size: 1em;
+}
+
+.flag {
+    width: 50%; /* Set width to 50% of the screen */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px auto;
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: gray;
+}
+
+/* p5 Canvas: full screen, on top, transparent, non-clickable */
+canvas {
+    position: fixed;       /* Stays in place on scroll */
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 9999;
+    pointer-events: none;  /* Click-through the canvas */
+}
+
+.click-me {
+    display: inline-block; /* Ensures the button is sized based on content */
+    background-color: gray; /* bright blue */
+    color: black;
+    margin: 20px auto;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.click-me:hover {
+    background-color: #0056b3;
+}
