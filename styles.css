@@ -1,5 +1,12 @@
+@font-face {
+    font-family: 'Orbitron';
+    src: url('./Orbitron-Regular.ttf') format('truetype'); /* Adjust path if needed */
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Orbitron', Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
