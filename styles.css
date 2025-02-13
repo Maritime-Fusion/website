@@ -9,9 +9,18 @@
 /* Inter font face */
 @font-face {
     font-family: 'Inter';
-    src: url('./Inter-Regular.ttf') format('truetype');
+    src: url('./InterVariable.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+}
+
+:root {
+    --primary-color: #1a1a1a;
+    --accent-color: #0066cc;
+    --background-color: #ffffff;
+    --text-color: #2c3e50;
+    --spacing-unit: 2rem;
+    --glow-color: rgba(0, 102, 204, 0.1);
 }
 
 body {
@@ -20,73 +29,182 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color: #fff;
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
 img {
     max-width: 100%;
     height: auto;
     background-color: white;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .logo {
-    width: 75%;
+    width: 50%;
     height: auto;
-    margin: 20px auto;
-    background-color: white;
+    margin: calc(var(--spacing-unit) * 1.5) auto;
+    background-color: transparent;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.02);
 }
 
 .title {
-    font-size: 2em;
+    font-size: 2.5em;
     font-weight: bold;
-    margin: 20px 0;
+    margin: var(--spacing-unit) 0;
+    color: var(--primary-color);
+    letter-spacing: 0.05em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .subtitle {
-    font-size: 1.2em;
-    margin: 20px auto;
-    width: 60%;
+    font-size: min(4.5vw, 3em);
+    margin: calc(var(--spacing-unit) * 2) auto;
     text-align: center;
+    display: block;
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    max-width: 800px;
+    padding: 0 20px;
+    position: relative;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--accent-color), transparent);
 }
 
 /* Main text content in Inter */
 .text-content {
     font-family: 'Inter', Arial, sans-serif;
     max-width: 800px;
-    margin: 0 auto 40px auto;
-    padding: 0 20px;
+    margin: 0 auto calc(var(--spacing-unit) * 2) auto;
+    padding: 0 var(--spacing-unit);
     text-align: left;
-    line-height: 1.6;
+    line-height: 1.8;
+    font-size: 1.1em;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: calc(var(--spacing-unit) * 1.5);
 }
 
 .text-content p {
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
+    opacity: 0.9;
+}
+
+.text-content strong {
+    font-weight: 900;
+    color: #000;
+    letter-spacing: 0.02em;
+    background: linear-gradient(120deg, var(--glow-color) 0%, var(--glow-color) 100%);
+    padding: 0.1em 0.2em;
+    border-radius: 3px;
 }
 
 /* Highlighted text styling */
 .highlight-text {
-    font-size: 1.5em;       /* Larger text */
-    font-weight: bold;      /* Bold */
+    font-size: 2em;
+    font-weight: bold;
     text-align: center;
-    margin: 40px 0;
-    color: #333;            /* Darker color for contrast */
+    margin: calc(var(--spacing-unit) * 2.5) auto;
+    color: var(--primary-color);
+    max-width: 900px;
+    padding: calc(var(--spacing-unit) * 1.5);
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.08), rgba(0, 102, 204, 0.03));
+    border-radius: 16px;
+    line-height: 1.4;
+    box-shadow: 0 8px 32px rgba(0, 102, 204, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 102, 204, 0.2), transparent);
 }
 
 .contact {
-    margin: 20px 0;
-    font-size: 1em;
+    margin: calc(var(--spacing-unit) * 2) auto;
+    font-size: 1.3em;
+    padding: var(--spacing-unit);
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: block;
+    width: fit-content;
+}
+
+.contact a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    background: rgba(0, 102, 204, 0.05);
+}
+
+.contact a:hover {
+    color: #0052a3;
+    background: rgba(0, 102, 204, 0.1);
+    transform: translateY(-2px);
 }
 
 .flag {
-    width: 60%;
+    width: 45%;
     height: auto;
-    margin: 20px auto;
+    margin: calc(var(--spacing-unit) * 2) auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    filter: brightness(1.02);
+}
+
+.flag:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
 footer {
-    margin-top: 40px;
-    font-size: 0.9em;
-    color: gray;
+    margin-top: calc(var(--spacing-unit) * 1.5);
+    padding: calc(var(--spacing-unit) * 1.5);
+    font-size: 1.1em;
+    color: #666;
+    background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    text-align: center;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
 }
 
 /* p5 Canvas: full screen, on top, transparent, non-clickable */
@@ -98,6 +216,50 @@ canvas {
     height: 100% !important;
     z-index: 9999;
     pointer-events: none;
+    opacity: 0.6;
+    mix-blend-mode: multiply;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    :root {
+        --spacing-unit: 1.5rem;
+    }
+
+    .logo {
+        width: 70%;
+    }
+
+    .flag {
+        width: 65%;
+    }
+
+    .text-content {
+        padding: var(--spacing-unit);
+        font-size: 1em;
+        border-radius: 8px;
+    }
+
+    .highlight-text {
+        font-size: 1.6em;
+        padding: var(--spacing-unit);
+        border-radius: 12px;
+    }
+
+    .contact {
+        font-size: 1.1em;
+        padding: var(--spacing-unit);
+    }
+}
+
+@media (min-width: 1440px) {
+    .text-content {
+        max-width: 900px;
+    }
+
+    .highlight-text {
+        max-width: 1000px;
+    }
 }
 
 /* Example styling for a button (if needed)
