@@ -1,7 +1,7 @@
 /* Orbitron font face */
 @font-face {
     font-family: 'Orbitron';
-    src: url('./Orbitron-Regular.ttf') format('truetype'); /* Adjust path if needed */
+    src: url('./Orbitron-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -9,19 +9,18 @@
 /* Inter font face */
 @font-face {
     font-family: 'Inter';
-    src: url('./Inter-Regular.ttf') format('truetype'); /* Adjust path if needed */
+    src: url('./Inter-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 body {
-    /* Use Orbitron for headings, but default fallback is Arial (or anything else) */
     font-family: 'Orbitron', Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Optional: prevents horizontal scroll if large elements exist */
-    background-color: #fff; /* Example background color */
+    overflow-x: hidden;
+    background-color: #fff;
 }
 
 img {
@@ -31,10 +30,10 @@ img {
 }
 
 .logo {
-    width: 75%; /* Set width to 75% of the screen */
-    height: auto; /* Maintain aspect ratio */
+    width: 75%;
+    height: auto;
     margin: 20px auto;
-    background-color: white; /* Set background color to white */
+    background-color: white;
 }
 
 .title {
@@ -62,14 +61,23 @@ img {
     margin-bottom: 1em;
 }
 
+/* Highlighted text styling */
+.highlight-text {
+    font-size: 1.5em;       /* Larger text */
+    font-weight: bold;      /* Bold */
+    text-align: center;
+    margin: 40px 0;
+    color: #333;            /* Darker color for contrast */
+}
+
 .contact {
     margin: 20px 0;
     font-size: 1em;
 }
 
 .flag {
-    width: 50%; /* Set width to 50% of the screen */
-    height: auto; /* Maintain aspect ratio */
+    width: 50%;
+    height: auto;
     margin: 20px auto;
 }
 
@@ -81,19 +89,19 @@ footer {
 
 /* p5 Canvas: full screen, on top, transparent, non-clickable */
 canvas {
-    position: fixed;       /* Stays in place on scroll */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100% !important;
     height: 100% !important;
     z-index: 9999;
-    pointer-events: none;  /* Click-through the canvas */
+    pointer-events: none;
 }
 
-/* Example styling if you bring back the button:
+/* Example styling for a button (if needed)
 .click-me {
     display: inline-block;
-    background-color: gray; 
+    background-color: gray;
     color: black;
     margin: 20px auto;
     border: none;
