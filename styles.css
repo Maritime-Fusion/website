@@ -44,7 +44,9 @@ img {
 
 .subtitle {
     font-size: 1.2em;
-    margin: 20px 0;
+    margin: 20px auto;
+    max-width: 60%;
+    text-align: center;
 }
 
 /* Main text content in Inter */
@@ -76,7 +78,7 @@ img {
 }
 
 .flag {
-    width: 75%;
+    width: 60%;
     height: auto;
     margin: 20px auto;
 }
