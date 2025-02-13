@@ -45,7 +45,7 @@ img {
 .subtitle {
     font-size: 1.2em;
     margin: 20px auto;
-    max-width: 60%;
+    width: 60%;
     text-align: center;
 }
 
