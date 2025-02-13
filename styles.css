@@ -44,7 +44,7 @@ img {
 .logo {
     width: 50%;
     height: auto;
-    margin: calc(var(--spacing-unit) * 1.5) auto;
+    margin: calc(var(--spacing-unit) * 1.5) auto calc(var(--spacing-unit) * 0.75) auto;
     background-color: transparent;
     transition: transform 0.3s ease;
 }
@@ -63,18 +63,18 @@ img {
 }
 
 .subtitle {
-    font-size: min(4.5vw, 3em);
-    margin: calc(var(--spacing-unit) * 2) auto;
+    font-size: min(3.5vw, 2.5em);
+    margin: 0 auto calc(var(--spacing-unit) * 1.5) auto;
     text-align: center;
     display: block;
     font-weight: 800;
     color: var(--primary-color);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    letter-spacing: 0.03em;
     max-width: 800px;
     padding: 0 20px;
     position: relative;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
 }
 
 .subtitle::after {
@@ -88,19 +88,50 @@ img {
     background: linear-gradient(to right, transparent, var(--accent-color), transparent);
 }
 
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-unit);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+}
+
+@media (min-width: 1024px) {
+    .content-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: calc(var(--spacing-unit) * 2);
+        padding: 0 calc(var(--spacing-unit) * 2);
+    }
+
+    .flag {
+        width: 45%;
+        margin: 0;
+        flex-shrink: 0;
+        position: sticky;
+        top: var(--spacing-unit);
+    }
+
+    .text-content {
+        width: 55%;
+        margin: 0;
+    }
+}
+
 /* Main text content in Inter */
 .text-content {
     font-family: 'Inter', Arial, sans-serif;
     max-width: 800px;
     margin: 0 auto calc(var(--spacing-unit) * 2) auto;
-    padding: 0 var(--spacing-unit);
+    padding: calc(var(--spacing-unit) * 1.5);
     text-align: left;
     line-height: 1.8;
     font-size: 1.1em;
     background: white;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    padding: calc(var(--spacing-unit) * 1.5);
 }
 
 .text-content p {
@@ -232,12 +263,14 @@ canvas {
 
     .flag {
         width: 65%;
+        margin: var(--spacing-unit) auto;
     }
 
     .text-content {
         padding: var(--spacing-unit);
         font-size: 1em;
         border-radius: 8px;
+        margin-bottom: var(--spacing-unit);
     }
 
     .highlight-text {
