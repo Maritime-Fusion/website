@@ -1,3 +1,4 @@
+/* Orbitron font face */
 @font-face {
     font-family: 'Orbitron';
     src: url('./Orbitron-Regular.ttf') format('truetype'); /* Adjust path if needed */
@@ -5,12 +6,22 @@
     font-style: normal;
 }
 
+/* Inter font face */
+@font-face {
+    font-family: 'Inter';
+    src: url('./Inter-Regular.ttf') format('truetype'); /* Adjust path if needed */
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
+    /* Use Orbitron for headings, but default fallback is Arial (or anything else) */
     font-family: 'Orbitron', Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Optional, prevents horizontal scroll if large elements exist */
+    overflow-x: hidden; /* Optional: prevents horizontal scroll if large elements exist */
+    background-color: #fff; /* Example background color */
 }
 
 img {
@@ -35,6 +46,20 @@ img {
 .subtitle {
     font-size: 1.2em;
     margin: 20px 0;
+}
+
+/* Main text content in Inter */
+.text-content {
+    font-family: 'Inter', Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    padding: 0 20px;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.text-content p {
+    margin-bottom: 1em;
 }
 
 .contact {
@@ -65,9 +90,10 @@ canvas {
     pointer-events: none;  /* Click-through the canvas */
 }
 
+/* Example styling if you bring back the button:
 .click-me {
-    display: inline-block; /* Ensures the button is sized based on content */
-    background-color: gray; /* bright blue */
+    display: inline-block;
+    background-color: gray; 
     color: black;
     margin: 20px auto;
     border: none;
@@ -82,3 +108,4 @@ canvas {
 .click-me:hover {
     background-color: #0056b3;
 }
+*/
