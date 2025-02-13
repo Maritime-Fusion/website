@@ -26,7 +26,7 @@
 }
 
 body {
-    font-family: 'Orbitron', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -110,6 +110,8 @@ img {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 var(--spacing-unit);
+    min-height: 100vh;
+    position: relative;
 }
 
 @media (min-width: 1024px) {
@@ -126,11 +128,13 @@ img {
         flex-shrink: 0;
         position: sticky;
         top: var(--spacing-unit);
+        align-self: flex-start;
     }
 
     .text-content {
         width: 55%;
         margin: 0;
+        position: relative;
     }
 }
 
@@ -138,7 +142,7 @@ img {
 .text-content {
     font-family: 'Inter', Arial, sans-serif;
     max-width: 800px;
-    margin: 0 auto calc(var(--spacing-unit) * 2) auto;
+    margin: 0 auto;
     padding: calc(var(--spacing-unit) * 1.5);
     text-align: left;
     line-height: 1.8;
@@ -217,9 +221,9 @@ img {
 }
 
 .contact {
-    margin: calc(var(--spacing-unit) * 2) auto;
+    margin: calc(var(--spacing-unit)) auto;
     font-size: 1.3em;
-    padding: var(--spacing-unit);
+    padding: calc(var(--spacing-unit) * 0.5);
     background: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
     box-shadow: 
@@ -274,7 +278,7 @@ img {
 .flag {
     width: 45%;
     height: auto;
-    margin: calc(var(--spacing-unit) * 2) auto;
+    margin: 0 auto;
     display: block;
     border-radius: 16px;
     box-shadow: 
@@ -338,7 +342,7 @@ canvas {
 
     .flag {
         width: 65%;
-        margin: var(--spacing-unit) auto;
+        margin: calc(var(--spacing-unit) * 2) auto;
     }
 
     .text-content {
@@ -357,6 +361,15 @@ canvas {
     .contact {
         font-size: 1.1em;
         padding: var(--spacing-unit);
+    }
+
+    .coming-soon-text {
+        font-size: 1.4em;
+    }
+    
+    .dot {
+        width: 6px;
+        height: 6px;
     }
 }
 
@@ -395,4 +408,303 @@ canvas {
         transition: none !important;
         animation: none !important;
     }
+}
+
+/* Coming soon section */
+.coming-soon {
+    margin: calc(var(--spacing-unit) * 1.5) auto;
+    padding: var(--spacing-unit);
+    text-align: center;
+    position: relative;
+}
+
+.coming-soon-text {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--primary-color);
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.5em;
+    background: linear-gradient(120deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pulse-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    margin-top: 1em;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+}
+
+/* Secondary Panels */
+.secondary-panels {
+    margin-top: calc(var(--spacing-unit) * 2);
+    display: flex;
+    flex-direction: row;
+    gap: calc(var(--spacing-unit) * 2);
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--spacing-unit);
+    align-items: flex-start;
+    position: relative;
+    overflow: visible;
+}
+
+.panel {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: calc(var(--spacing-unit));
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        0 10px 30px rgba(0, 102, 204, 0.05);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.market-panel, .team-panel {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 0.4);
+}
+
+.panel-title {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-bottom: calc(var(--spacing-unit) * 0.2);
+    color: var(--primary-color);
+}
+
+.market-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(var(--spacing-unit) * 0.3);
+    margin: calc(var(--spacing-unit) * 0.2) 0;
+}
+
+.panel-section {
+    padding: calc(var(--spacing-unit) * 0.2);
+    gap: calc(var(--spacing-unit) * 0.2);
+}
+
+.panel-subtitle {
+    font-size: 1.2em;
+    margin: 0 0 calc(var(--spacing-unit) * 0.15) 0;
+    padding-bottom: 0.15em;
+}
+
+.panel-list {
+    margin: 0;
+    padding-left: 1.2em;
+    list-style-type: disc;
+}
+
+.panel-list li {
+    margin-bottom: 0.2em;
+    line-height: 1.2;
+    text-align: left;
+    padding-left: 0.3em;
+}
+
+.market-highlight {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 1.4em;
+    color: var(--accent-color);
+    margin: calc(var(--spacing-unit) * 0.3) 0;
+    padding: calc(var(--spacing-unit) * 0.5);
+    text-align: center;
+    line-height: 1.3;
+}
+
+.ship-images {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 0.8);
+    margin-top: calc(var(--spacing-unit) * 1);
+}
+
+.ship-image {
+    width: 47%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.ship-image:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.team-description {
+    font-size: 1.1em;
+    line-height: 1.5;
+    margin: calc(var(--spacing-unit) * 0.3) 0;
+    text-align: left;
+}
+
+.team-description p {
+    margin-bottom: calc(var(--spacing-unit) * 0.8);
+}
+
+.team-description p:last-child {
+    margin-bottom: 0;
+}
+
+.company-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: calc(var(--spacing-unit));
+    margin: calc(var(--spacing-unit)) 0;
+}
+
+.company-logo {
+    height: calc(var(--spacing-unit) * 1.1);
+    width: auto;
+    margin: calc(var(--spacing-unit) * 0.3) calc(var(--spacing-unit) * 0.5);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    filter: grayscale(100%);
+    background: transparent;
+}
+
+.company-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: translateY(-2px);
+}
+
+.team-image {
+    width: 85%;
+    margin: calc(var(--spacing-unit) * 0.5) auto 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 1024px) {
+    .secondary-panels {
+        gap: calc(var(--spacing-unit) * 3);
+        padding: 0 calc(var(--spacing-unit) * 2);
+        align-items: flex-start;
+        min-height: 100vh;
+    }
+
+    .market-panel {
+        width: 55%;
+        position: sticky;
+        top: var(--spacing-unit);
+        height: fit-content;
+        align-self: flex-start;
+        margin-bottom: var(--spacing-unit);
+    }
+
+    .team-panel {
+        width: 45%;
+        position: relative;
+        margin-bottom: var(--spacing-unit);
+    }
+}
+
+@media (max-width: 768px) {
+    .secondary-panels {
+        flex-direction: column;
+        gap: calc(var(--spacing-unit));
+        padding: 0 calc(var(--spacing-unit) * 0.5);
+    }
+
+    .panel {
+        padding: calc(var(--spacing-unit) * 0.8);
+    }
+
+    .market-grid {
+        grid-template-columns: 1fr;
+        gap: calc(var(--spacing-unit) * 0.6);
+    }
+
+    .panel-section {
+        padding: calc(var(--spacing-unit) * 0.5);
+    }
+
+    .market-highlight {
+        font-size: 1.2em;
+        padding: calc(var(--spacing-unit) * 0.4);
+    }
+
+    .company-logo {
+        height: calc(var(--spacing-unit) * 0.9);
+    }
+    
+    .company-logos {
+        gap: calc(var(--spacing-unit) * 0.5);
+        margin: calc(var(--spacing-unit) * 0.5) 0;
+    }
+
+    .ship-images {
+        flex-direction: row;
+        gap: calc(var(--spacing-unit) * 0.5);
+        margin-top: calc(var(--spacing-unit) * 0.8);
+    }
+
+    .ship-image {
+        width: 47%;
+    }
+
+    .team-image {
+        width: 95%;
+    }
+}
+
+strong {
+    font-weight: 900;
+    color: #000;
+    letter-spacing: 0.02em;
+    background: linear-gradient(120deg, var(--glow-color) 0%, var(--glow-color) 100%);
+    padding: 0.1em 0.2em;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+strong:hover {
+    background: linear-gradient(120deg, rgba(0, 102, 204, 0.15) 0%, rgba(0, 102, 204, 0.15) 100%);
+    transform: translateY(-1px);
 }
