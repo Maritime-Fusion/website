@@ -276,7 +276,7 @@ img {
 }
 
 .flag {
-    width: 45%;
+    width: 65%;
     height: auto;
     margin: 0 auto;
     display: block;
@@ -341,7 +341,7 @@ canvas {
     }
 
     .flag {
-        width: 65%;
+        width: 75%;
         margin: calc(var(--spacing-unit) * 2) auto;
     }
 
