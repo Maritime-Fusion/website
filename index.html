@@ -32,11 +32,11 @@
     <div class="yc-attribution">
       Backed by <img src="yc.png" alt="Y Combinator" class="yc-logo">
     </div>
-    <div class="scroll-arrow"></div>
+    <div class="scroll-arrow" id="scroll-arrow"></div>
   </section>
   
   <!-- Main Content (Original Site) -->
-  <div class="main-content">
+  <div class="main-content" id="main-content">
     <!-- Removed redundant logo and subtitle -->
     
     <div class="content-wrapper">
@@ -172,6 +172,25 @@
         backgroundVideo.play().catch(error => {
           console.log('Auto-play was prevented:', error);
           // You might want to add a play button for mobile devices here
+        });
+      }
+      
+      // Add scroll down functionality to the arrow
+      const scrollArrow = document.getElementById('scroll-arrow');
+      if (scrollArrow) {
+        scrollArrow.addEventListener('click', function() {
+          // Scroll to the main content section
+          const mainContent = document.getElementById('main-content');
+          if (mainContent) {
+            // Get the top position of the main content
+            const mainContentTop = mainContent.getBoundingClientRect().top + window.pageYOffset;
+            
+            // Scroll there with smooth animation
+            window.scrollTo({
+              top: mainContentTop,
+              behavior: 'smooth'
+            });
+          }
         });
       }
     });
