@@ -1,0 +1,15 @@
+{
+  "name": "maritime-fusion-website",
+  "version": "1.0.0",
+  "description": "Maritime Fusion Website Preview Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node live_server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "open": "^9.1.0",
+    "browser-sync": "^2.29.3"
+  }
+} 

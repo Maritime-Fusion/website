@@ -13,7 +13,7 @@
   <!-- Background Video Section -->
   <div class="background-video-container">
     <div class="video-overlay"></div>
-    <video class="background-video" autoplay loop muted playsinline>
+    <video class="background-video" autoplay loop muted playsinline id="background-video">
       <source src="video_optimized.mp4" type="video/mp4">
       <source src="video.webm" type="video/webm">
       Your browser does not support the video tag.
@@ -24,6 +24,10 @@
   <section class="hero-section">
     <img src="logo.png" alt="Maritime Fusion Logo" class="hero-logo">
     <a href="#footer" class="get-in-touch-btn">Get in Touch</a>
+    <!-- Audio Toggle Button -->
+    <button id="audio-toggle" class="audio-toggle" aria-label="Toggle Audio">
+      <span class="audio-icon audio-off"></span>
+    </button>
     <div class="hero-content">
       <!-- Removed the h1 title -->
       <!-- Subtitle will be positioned via CSS -->
@@ -64,7 +68,7 @@
         </p>
         <p>
           Since fusion does not use highly radioactive fuels or materials – unlike fission – we <strong>sidestep the vast majority of 
-          regulatory challenges and safety risks</strong> associated with nuclear energy.
+  regulatory challenges and safety risks</strong> associated with nuclear energy.
         </p>
       </div>
     </div>
@@ -123,19 +127,23 @@
 
       <!-- Team Panel -->
       <div class="panel team-panel">
-        <h2 class="panel-title">Team</h2>
-        <div class="team-description">
-          <p>Our team brings <strong>over a decade of industry and research experience</strong> in plasma physics, nuclear engineering, and electrical engineering with backgrounds at <strong>SpaceX, Tesla, Columbia University, and University of Pennsylvania</strong>.</p>
-          
-          <p>We first met at SpaceX while conducting radiation tests for Starship electronics, and later worked together at Tesla on Cybertruck and Optimus.</p>
+        <div class="team-content">
+          <h2 class="panel-title">Team</h2>
+          <div class="team-description">
+            <p>Our team brings <strong>over a decade of industry and research experience</strong> in plasma physics, nuclear engineering, and electrical engineering with backgrounds at <strong>SpaceX, Tesla, Columbia University, and University of Pennsylvania</strong>.</p>
+            
+            <p>We first met at SpaceX while conducting radiation tests for Starship electronics, and later worked together at Tesla on Cybertruck and Optimus.</p>
+          </div>
+          <div class="company-logos">
+            <img src="spacex.png" alt="SpaceX" class="company-logo">
+            <img src="tesla.png" alt="Tesla" class="company-logo">
+            <img src="columbia.png" alt="Columbia University" class="company-logo">
+            <img src="penn.png" alt="University of Pennsylvania" class="company-logo">
+          </div>
         </div>
-        <div class="company-logos">
-          <img src="spacex.png" alt="SpaceX" class="company-logo">
-          <img src="tesla.png" alt="Tesla" class="company-logo">
-          <img src="columbia.png" alt="Columbia University" class="company-logo">
-          <img src="penn.png" alt="University of Pennsylvania" class="company-logo">
+        <div class="team-image-container">
+          <img src="team.png" alt="Our Team" class="team-image">
         </div>
-        <img src="team.png" alt="Our Team" class="team-image">
       </div>
     </div>
 
@@ -221,6 +229,185 @@
           }
         }
       });
+    });
+
+    // Audio toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const audioToggleBtn = document.getElementById('audio-toggle');
+      const backgroundVideo = document.getElementById('background-video');
+      const audioIcon = document.querySelector('.audio-icon');
+      
+      // Audio is off by default (video is muted)
+      let audioOn = false;
+      
+      audioToggleBtn.addEventListener('click', function() {
+        if (audioOn) {
+          // Turn audio off
+          backgroundVideo.muted = true;
+          audioIcon.classList.remove('audio-on');
+          audioIcon.classList.add('audio-off');
+          audioOn = false;
+        } else {
+          // Turn audio on - may require user interaction first
+          backgroundVideo.muted = false;
+          audioIcon.classList.remove('audio-off');
+          audioIcon.classList.add('audio-on');
+          audioOn = true;
+          
+          // Some browsers require video to be played after user interaction
+          backgroundVideo.play().catch(error => {
+            console.log('Video playback error:', error);
+          });
+        }
+      });
+      
+      // Check if the browser policy prevents autoplay with sound
+      if (backgroundVideo.paused) {
+        // If video is paused, try to play it muted
+        backgroundVideo.muted = true;
+        backgroundVideo.play().catch(error => {
+          console.log('Video autoplay error:', error);
+        });
+      }
+    });
+  </script>
+
+  <!-- Scroll animation script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add animation classes to elements
+      const textContent = document.querySelector('.text-content');
+      if (textContent) {
+        // Mark the container for sequential animations
+        textContent.classList.add('animate', 'animate-children');
+        
+        // Add animation classes to each paragraph in the main text content
+        const paragraphs = textContent.querySelectorAll('p');
+        paragraphs.forEach((p, index) => {
+          p.classList.add('child-animate');
+        });
+
+        // Add animation to the highlight text
+        const highlightText = document.querySelector('.highlight-text');
+        if (highlightText) {
+          highlightText.classList.add('animate', 'pop-in', 'slow');
+        }
+      }
+
+      // Add animations to the panel titles
+      const panelTitles = document.querySelectorAll('.panel-title');
+      panelTitles.forEach(title => {
+        title.classList.add('animate', 'fade-in');
+      });
+
+      // Add animations to the market panel content
+      const marketGrid = document.querySelector('.market-grid');
+      if (marketGrid) {
+        marketGrid.classList.add('animate', 'animate-children');
+        const sections = marketGrid.querySelectorAll('.panel-section');
+        sections.forEach((section, index) => {
+          section.classList.add('child-animate');
+        });
+      }
+
+      // Animate each list item in panels
+      const panelLists = document.querySelectorAll('.panel-list');
+      panelLists.forEach(list => {
+        list.classList.add('animate', 'animate-children');
+        const items = list.querySelectorAll('li');
+        items.forEach(item => {
+          item.classList.add('child-animate');
+        });
+      });
+
+      // Add animations to the market segments
+      const marketSegments = document.querySelector('.market-segments');
+      if (marketSegments) {
+        marketSegments.classList.add('animate', 'animate-children');
+        const segments = marketSegments.querySelectorAll('.market-segment');
+        segments.forEach(segment => {
+          segment.classList.add('child-animate');
+        });
+      }
+
+      // Add animations to team description
+      const teamDescription = document.querySelector('.team-description');
+      if (teamDescription) {
+        teamDescription.classList.add('animate', 'animate-children');
+        const paragraphs = teamDescription.querySelectorAll('p');
+        paragraphs.forEach(p => {
+          p.classList.add('child-animate');
+        });
+      }
+
+      // Company logos animation
+      const companyLogos = document.querySelector('.company-logos');
+      if (companyLogos) {
+        companyLogos.classList.add('animate', 'animate-children');
+        const logos = companyLogos.querySelectorAll('.company-logo');
+        logos.forEach(logo => {
+          logo.classList.add('child-animate');
+        });
+      }
+
+      // Add animations to key points with alternating directions
+      const keyPointsContainer = document.querySelector('.key-points');
+      if (keyPointsContainer) {
+        keyPointsContainer.classList.add('animate', 'animate-children');
+        const keyPoints = keyPointsContainer.querySelectorAll('.key-point');
+        keyPoints.forEach((point, index) => {
+          point.classList.add('animate', index % 2 === 0 ? 'slide-in-left' : 'slide-in-right');
+        });
+      }
+
+      // Animate ship images
+      const shipImages = document.querySelector('.ship-images');
+      if (shipImages) {
+        const images = shipImages.querySelectorAll('.ship-image');
+        images.forEach((img, index) => {
+          img.classList.add('animate', index === 0 ? 'slide-in-left' : 'slide-in-right');
+        });
+      }
+
+      // Animate team image with a nice pop effect
+      const teamImage = document.querySelector('.team-image');
+      if (teamImage) {
+        teamImage.classList.add('animate', 'pop-in', 'delay-400');
+      }
+      
+      // Create intersection observer
+      const animatedElements = document.querySelectorAll('.animate');
+      
+      const observerOptions = {
+        root: null, // use viewport
+        rootMargin: '0px',
+        threshold: 0.15 // trigger when 15% of element is visible
+      };
+      
+      const observer = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
+            observer.unobserve(entry.target); // stop observing after animation
+          }
+        });
+      }, observerOptions);
+      
+      // Observe all animated elements
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+
+      // Ensure all elements above the fold appear immediately
+      setTimeout(() => {
+        const viewportHeight = window.innerHeight;
+        animatedElements.forEach(element => {
+          const rect = element.getBoundingClientRect();
+          if (rect.top < viewportHeight) {
+            element.classList.add('appear');
+          }
+        });
+      }, 300);
     });
   </script>
 </body>

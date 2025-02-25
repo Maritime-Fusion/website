@@ -129,10 +129,13 @@ img {
 @media (min-width: 1024px) {
     .content-wrapper {
         flex-direction: row;
-        align-items: flex-start;
-        gap: calc(var(--spacing-unit) * 2);
+        align-items: stretch;
+        gap: 0;
         padding: 0 calc(var(--spacing-unit) * 2);
         overflow: visible;
+        min-height: auto;
+        max-width: 100%;
+        margin: 0 auto;
     }
 
     .flag {
@@ -146,9 +149,22 @@ img {
     }
 
     .text-content {
-        width: 55%;
+        width: 50%;
         margin: 0;
         position: relative;
+        padding-left: calc(var(--spacing-unit));
+        max-width: none;
+    }
+
+    .reactor-image {
+        width: 50%;
+        margin: 0;
+        position: relative;
+        top: auto;
+        align-self: stretch;
+        height: auto;
+        object-fit: cover;
+        padding-right: calc(var(--spacing-unit));
     }
 }
 
@@ -156,25 +172,21 @@ img {
 .text-content {
     font-family: 'Inter', Arial, sans-serif;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0;
     padding: calc(var(--spacing-unit) * 1.5);
     text-align: left;
     line-height: 1.8;
     font-size: 1.1em;
     background: rgba(255, 255, 255, 0.9);
-    border-radius: 16px;
-    box-shadow: 
-        0 4px 6px rgba(0, 0, 0, 0.05),
-        0 10px 30px rgba(0, 102, 204, 0.05);
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    transition: transform 0.3s ease;
 }
 
 .text-content:hover {
-    transform: translateY(-2px);
-    box-shadow: 
-        0 6px 12px rgba(0, 0, 0, 0.08),
-        0 15px 40px rgba(0, 102, 204, 0.08);
+    transform: translateY(0);
+    box-shadow: none;
 }
 
 .text-content p {
@@ -404,6 +416,37 @@ canvas {
         top: initial;
         align-self: center;
     }
+
+    .market-segments {
+        grid-template-columns: 1fr;
+        gap: calc(var(--spacing-unit) * 0.5);
+    }
+
+    .segment-link {
+        padding: calc(var(--spacing-unit) * 0.4);
+        font-size: 0.9em;
+    }
+    
+    .secondary-panels {
+        flex-direction: column;
+        gap: 0;
+        padding: 0 calc(var(--spacing-unit) * 0.5);
+    }
+
+    .panel {
+        padding: calc(var(--spacing-unit) * 0.8);
+        width: 100%; /* Full width on mobile */
+        margin-bottom: calc(var(--spacing-unit));
+    }
+    
+    .market-panel, .team-panel {
+        padding: calc(var(--spacing-unit) * 0.8);
+        width: 100%;
+    }
+
+    .team-image-container {
+        min-height: 340px; /* Added minimum height for mobile */
+    }
 }
 
 @media (min-width: 1440px) {
@@ -510,25 +553,23 @@ canvas {
     margin-top: calc(var(--spacing-unit) * 2);
     display: flex;
     flex-direction: row;
-    gap: calc(var(--spacing-unit) * 2);
-    max-width: 1400px;
+    gap: 0;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 var(--spacing-unit);
-    align-items: flex-start;
+    padding: 0 calc(var(--spacing-unit) * 2);
+    align-items: stretch;
     position: relative;
     overflow: visible;
 }
 
 .panel {
     background: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
+    border-radius: 0;
     padding: calc(var(--spacing-unit));
-    box-shadow: 
-        0 4px 6px rgba(0, 0, 0, 0.05),
-        0 10px 30px rgba(0, 102, 204, 0.05);
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: none;
+    backdrop-filter: none;
+    transition: transform 0.3s ease;
 }
 
 .market-panel, .team-panel {
@@ -551,7 +592,7 @@ canvas {
     gap: calc(var(--spacing-unit) * 0.3);
     margin: calc(var(--spacing-unit) * 0.2) 0;
     padding-bottom: calc(var(--spacing-unit) * 0.5);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     margin-bottom: calc(var(--spacing-unit) * 0.5);
 }
 
@@ -595,20 +636,21 @@ canvas {
     align-items: center;
     gap: calc(var(--spacing-unit) * 0.8);
     margin-top: calc(var(--spacing-unit) * 0.5);
+    padding-bottom: 0;
 }
 
 .ship-image {
     width: 47%;
     aspect-ratio: 16/9;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 0;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
 }
 
 .ship-image:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: none;
+    box-shadow: none;
 }
 
 .team-description {
@@ -648,40 +690,88 @@ canvas {
 .company-logo:hover {
     opacity: 1;
     filter: grayscale(0%);
-    transform: translateY(-2px);
+    transform: none;
 }
 
 .team-image {
     width: 85%;
     margin: calc(var(--spacing-unit) * 0.5) auto 0;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    box-shadow: none;
     object-fit: contain;
+    max-height: 350px; /* Increased from default */
 }
 
 @media (min-width: 1024px) {
     .secondary-panels {
-        gap: calc(var(--spacing-unit) * 3);
+        gap: 0;
         padding: 0 calc(var(--spacing-unit) * 2);
-        align-items: flex-start;
-        min-height: 100vh;
+        align-items: stretch;
+        min-height: auto;
         overflow: visible;
+        display: flex;
     }
 
     .market-panel {
-        width: 55%;
-        position: sticky;
-        top: var(--spacing-unit);
-        height: fit-content;
-        align-self: flex-start;
+        width: 50%;
+        position: relative;
+        top: auto;
+        height: auto;
+        align-self: stretch;
         margin-bottom: var(--spacing-unit);
         overflow: visible;
+        padding-right: calc(var(--spacing-unit));
+        display: flex;
+        flex-direction: column;
     }
 
     .team-panel {
-        width: 45%;
+        width: 50%;
         position: relative;
         margin-bottom: var(--spacing-unit);
+        padding-left: calc(var(--spacing-unit));
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Create a container for team content that will push the image to the bottom */
+    .team-content {
+        flex: 1 0 auto;
+    }
+    
+    /* Position team image container relative to the panel */
+    .team-image-container {
+        margin-top: auto;
+        display: flex;
+        align-items: flex-start;
+        position: relative;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        min-height: 450px;
+        justify-content: center;
+    }
+    
+    /* Ensure the team image can grow upward */
+    .team-image {
+        margin: 0 auto;
+        transform: translateY(0);
+        max-height: 450px;
+        object-fit: contain;
+        width: auto;
+        max-width: 100%;
+    }
+    
+    /* Remove margin-top auto from ship images to keep original spacing */
+    .ship-images {
+        margin-top: calc(var(--spacing-unit) * 0.5);
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 0;
+    }
+    
+    /* Ensure both panels have equal bottom spacing */
+    .market-panel, .team-panel {
+        padding-bottom: 0;
     }
 }
 
@@ -732,6 +822,7 @@ canvas {
     .team-image {
         width: 95%;
         object-fit: contain;
+        max-height: 320px; /* Added explicit max-height for mobile */
     }
 }
 
@@ -777,16 +868,23 @@ strong:hover {
     text-decoration: none;
     padding: calc(var(--spacing-unit) * 0.7);
     background: rgba(0, 102, 204, 0.05);
-    border-radius: 12px;
+    border-radius: 0;
     transition: all 0.3s ease;
     line-height: 1.4;
     font-size: 0.95em;
-    border: 1px solid rgba(0, 102, 204, 0.2);
+    border: none;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     text-align: left;
     height: 100%;
+}
+
+.segment-link:hover {
+    background: rgba(0, 102, 204, 0.1);
+    transform: none;
+    box-shadow: none;
+    border-color: transparent;
 }
 
 .segment-link::after {
@@ -798,28 +896,9 @@ strong:hover {
     flex-shrink: 0;
 }
 
-.segment-link:hover {
-    background: rgba(0, 102, 204, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.1);
-    border-color: var(--accent-color);
-}
-
 .segment-link:hover::after {
     transform: translateX(5px);
     opacity: 1;
-}
-
-@media (max-width: 768px) {
-    .market-segments {
-        grid-template-columns: 1fr;
-        gap: calc(var(--spacing-unit) * 0.5);
-    }
-
-    .segment-link {
-        padding: calc(var(--spacing-unit) * 0.4);
-        font-size: 0.9em;
-    }
 }
 
 .key-points {
@@ -1270,11 +1349,9 @@ strong:hover {
 .reactor-image {
     width: 45%;
     margin: 0;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 
-        0 8px 24px rgba(0, 0, 0, 0.1),
-        0 2px 6px rgba(0, 102, 204, 0.1);
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
     transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     flex-shrink: 0;
     position: sticky;
@@ -1284,33 +1361,35 @@ strong:hover {
 }
 
 .reactor-image:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 
-        0 16px 48px rgba(0, 0, 0, 0.15),
-        0 4px 12px rgba(0, 102, 204, 0.15);
+    transform: translateY(0) scale(1);
+    box-shadow: none;
 }
 
 @media (min-width: 1024px) {
     .reactor-image {
-        width: 45%;
+        width: 50%;
         margin: 0;
-        position: sticky;
-        top: var(--spacing-unit);
-        align-self: flex-start;
-        height: fit-content;
+        position: relative;
+        top: auto;
+        align-self: stretch;
+        height: auto;
+        object-fit: cover;
+        padding-right: calc(var(--spacing-unit));
     }
     
     .text-content {
-        width: 55%;
+        width: 50%;
         margin: 0;
         position: relative;
+        padding-left: calc(var(--spacing-unit));
+        max-width: none;
     }
 }
 
 @media (max-width: 768px) {
     .reactor-image {
         width: 85%;
-        margin: calc(var(--spacing-unit) * 1) auto; /* Reduced from 2 to 1 */
+        margin: calc(var(--spacing-unit) * 1) auto;
         position: relative;
         top: initial;
     }
@@ -1343,7 +1422,7 @@ strong:hover {
 .get-in-touch-btn {
     position: absolute;
     top: var(--spacing-unit);
-    right: calc(var(--spacing-unit) * 4);
+    right: calc(var(--spacing-unit) * 6);
     background-color: rgba(255, 255, 255, 0.15);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.7);
@@ -1364,7 +1443,6 @@ strong:hover {
     max-width: 150px;
     overflow: hidden;
     transform: none;
-    /* Square border effect */
 }
 
 .get-in-touch-btn:hover {
@@ -1426,12 +1504,193 @@ strong:hover {
 /* Adjust the button position to ensure it stays in view */
 @media (max-width: 1200px) {
     .get-in-touch-btn {
-        right: calc(var(--spacing-unit) * 2);
+        right: calc(var(--spacing-unit) * 4);
     }
 }
 
 @media (min-width: 1201px) {
     .get-in-touch-btn {
-        right: calc(var(--spacing-unit) * 4);
+        right: calc(var(--spacing-unit) * 6);
+    }
+}
+
+/* Audio Toggle Button */
+.audio-toggle {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.audio-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.audio-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s ease;
+}
+
+.audio-icon.audio-off {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='white'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73L4.27 3zM12 4l-1.88 1.88 L12,7.76V4z'/%3E%3C/svg%3E");
+}
+
+.audio-icon.audio-on {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='white'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z'/%3E%3C/svg%3E");
+}
+
+/* Responsive adjustments for audio button */
+@media (max-width: 768px) {
+    .audio-toggle {
+        bottom: 0.75rem;
+        right: 0.75rem;
+        width: 36px;
+        height: 36px;
+    }
+    
+    .audio-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Remove the old media queries for the audio button position since it's now fixed to bottom right */
+@media (max-width: 1200px) {
+    .audio-toggle {
+    }
+}
+
+@media (min-width: 1201px) {
+    .audio-toggle {
+    }
+}
+
+.panel:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.team-image-container {
+    margin-top: auto;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    min-height: 420px; /* Added to ensure enough vertical space */
+    justify-content: center; /* Center the image horizontally */
+}
+
+/* Scroll-triggered animations */
+.animate {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(40px);
+    will-change: opacity, transform;
+    pointer-events: none; /* Prevent interaction until animation completes */
+}
+
+.animate.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.animate.slide-in-right {
+    opacity: 0;
+    transform: translateX(60px);
+}
+
+.animate.slide-in-left {
+    opacity: 0;
+    transform: translateX(-60px);
+}
+
+.animate.zoom-in {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.animate.pop-in {
+    opacity: 0;
+    transform: scale(0.5) translateY(20px);
+}
+
+.animate.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.animate.delay-400 {
+    transition-delay: 0.4s;
+}
+
+.animate.delay-600 {
+    transition-delay: 0.6s;
+}
+
+.animate.delay-800 {
+    transition-delay: 0.8s;
+}
+
+.animate.slow {
+    transition-duration: 1.2s;
+}
+
+.animate.fast {
+    transition-duration: 0.5s;
+}
+
+.animate.appear {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+    pointer-events: auto; /* Re-enable interaction after animation completes */
+}
+
+/* Special sequential animations */
+.animate-children .child-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-children.appear .child-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-children.appear .child-animate:nth-child(1) { transition-delay: 0.1s; }
+.animate-children.appear .child-animate:nth-child(2) { transition-delay: 0.2s; }
+.animate-children.appear .child-animate:nth-child(3) { transition-delay: 0.3s; }
+.animate-children.appear .child-animate:nth-child(4) { transition-delay: 0.4s; }
+.animate-children.appear .child-animate:nth-child(5) { transition-delay: 0.5s; }
+.animate-children.appear .child-animate:nth-child(6) { transition-delay: 0.6s; }
+.animate-children.appear .child-animate:nth-child(7) { transition-delay: 0.7s; }
+.animate-children.appear .child-animate:nth-child(8) { transition-delay: 0.8s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .animate,
+    .animate-children .child-animate {
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
     }
 }
