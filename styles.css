@@ -123,6 +123,7 @@ img {
     padding: 0 var(--spacing-unit);
     min-height: 100vh;
     position: relative;
+    overflow: visible;
 }
 
 @media (min-width: 1024px) {
@@ -131,6 +132,7 @@ img {
         align-items: flex-start;
         gap: calc(var(--spacing-unit) * 2);
         padding: 0 calc(var(--spacing-unit) * 2);
+        overflow: visible;
     }
 
     .flag {
@@ -140,6 +142,7 @@ img {
         position: sticky;
         top: var(--spacing-unit);
         align-self: flex-start;
+        height: fit-content;
     }
 
     .text-content {
@@ -390,6 +393,16 @@ canvas {
 
     .company-logo {
         height: calc(var(--spacing-unit) * 1.2);
+    }
+
+    .reactor-image,
+    .flag,
+    .market-panel {
+        width: 85%;
+        margin: calc(var(--spacing-unit) * 1) auto;
+        position: relative;
+        top: initial;
+        align-self: center;
     }
 }
 
@@ -652,6 +665,7 @@ canvas {
         padding: 0 calc(var(--spacing-unit) * 2);
         align-items: flex-start;
         min-height: 100vh;
+        overflow: visible;
     }
 
     .market-panel {
@@ -661,6 +675,7 @@ canvas {
         height: fit-content;
         align-self: flex-start;
         margin-bottom: var(--spacing-unit);
+        overflow: visible;
     }
 
     .team-panel {
@@ -1129,8 +1144,6 @@ strong:hover {
         radial-gradient(circle at 100% 100%, var(--gradient-end) 0%, transparent 50%),
         linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
     padding-top: var(--spacing-unit);
-    position: relative;
-    z-index: 2;
 }
 
 /* Responsive adjustments */
@@ -1267,6 +1280,7 @@ strong:hover {
     position: sticky;
     top: var(--spacing-unit);
     align-self: flex-start;
+    height: fit-content;
 }
 
 .reactor-image:hover {
@@ -1274,6 +1288,23 @@ strong:hover {
     box-shadow: 
         0 16px 48px rgba(0, 0, 0, 0.15),
         0 4px 12px rgba(0, 102, 204, 0.15);
+}
+
+@media (min-width: 1024px) {
+    .reactor-image {
+        width: 45%;
+        margin: 0;
+        position: sticky;
+        top: var(--spacing-unit);
+        align-self: flex-start;
+        height: fit-content;
+    }
+    
+    .text-content {
+        width: 55%;
+        margin: 0;
+        position: relative;
+    }
 }
 
 @media (max-width: 768px) {
