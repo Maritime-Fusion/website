@@ -1087,7 +1087,7 @@ strong:hover {
 /* Replace text-based scroll indicator with subtle arrow */
 .scroll-arrow {
     position: absolute;
-    bottom: calc(var(--spacing-unit) * 3.5);
+    bottom: calc(var(--spacing-unit) * 2);
     left: 50%;
     width: 30px;
     height: 30px;
