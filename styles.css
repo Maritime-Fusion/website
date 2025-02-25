@@ -987,7 +987,7 @@ strong:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 0;
 }
 
@@ -1002,6 +1002,7 @@ strong:hover {
     padding: var(--spacing-unit);
     position: relative;
     z-index: 1;
+    overflow: hidden;
 }
 
 /* Adjust logo for hero section */
@@ -1015,6 +1016,7 @@ strong:hover {
     background-color: transparent;
     transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+    z-index: 10;
 }
 
 .hero-content {
@@ -1113,26 +1115,35 @@ strong:hover {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .hero-section {
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: calc(var(--spacing-unit) * 5);
+    }
+    
     .hero-logo {
-        width: 250px;
+        width: 220px;
         top: calc(var(--spacing-unit) * 0.5);
         left: calc(var(--spacing-unit) * 1);
     }
     
-    .hero-title {
-        font-size: 2.5em;
+    .hero-content {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        padding: 0 calc(var(--spacing-unit) * 0.5);
+        margin-top: auto;
+        margin-bottom: calc(var(--spacing-unit) * 10);
+        text-align: center;
+        max-width: 100%;
     }
     
     .hero-subtitle {
-        font-size: 1em;
+        font-size: 1.2em;
         padding: 0.4em 0;
         letter-spacing: 0.04em;
-    }
-    
-    .hero-content {
-        right: calc(var(--spacing-unit) * 1);
-        bottom: calc(var(--spacing-unit) * 3);
-        max-width: 90%;
+        white-space: normal;
+        text-align: center;
     }
     
     .scroll-arrow {
@@ -1144,12 +1155,51 @@ strong:hover {
     
     .yc-attribution {
         bottom: calc(var(--spacing-unit) * 3);
-        left: calc(var(--spacing-unit) * 1);
+        left: 50%;
+        transform: translateX(-50%);
         font-size: 1em;
+        width: 100%;
+        justify-content: center;
     }
     
     .yc-logo {
         height: 20px;
+    }
+    
+    .get-in-touch-btn {
+        display: none;
+    }
+    
+    .video-overlay {
+        background: rgba(0, 0, 0, 0.6);
+    }
+}
+
+/* Additional breakpoint for very small screens */
+@media (max-width: 480px) {
+    .hero-logo {
+        width: 180px;
+    }
+    
+    .hero-content {
+        margin-bottom: calc(var(--spacing-unit) * 8);
+    }
+    
+    .hero-subtitle {
+        font-size: 1em;
+    }
+    
+    .yc-attribution {
+        bottom: calc(var(--spacing-unit) * 2);
+        font-size: 0.9em;
+    }
+    
+    .get-in-touch-btn {
+        display: none;
+    }
+    
+    .scroll-arrow {
+        bottom: calc(var(--spacing-unit) * 1.5);
     }
 }
 
@@ -1283,11 +1333,7 @@ strong:hover {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .get-in-touch-btn {
-        top: calc(var(--spacing-unit) * 0.5);
-        right: calc(var(--spacing-unit) * 1);
-        font-size: 0.9em;
-        padding: 0.5em 1em;
-        max-width: 120px;
+        display: none;
     }
 }
 
