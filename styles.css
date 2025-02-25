@@ -1164,9 +1164,11 @@ strong:hover {
         right: auto;
         padding: 0 calc(var(--spacing-unit) * 0.5);
         margin-top: auto;
-        margin-bottom: calc(var(--spacing-unit) * 3); /* Reduced from 10 to 3 */
+        margin-bottom: calc(var(--spacing-unit) * 4); /* Increased to move closer to arrow */
         text-align: center;
         max-width: 100%;
+        width: 100%; /* Ensure full width */
+        left: 0; /* Reset any left positioning */
     }
     
     .hero-subtitle {
@@ -1175,10 +1177,13 @@ strong:hover {
         letter-spacing: 0.04em;
         white-space: normal;
         text-align: center;
+        display: block; /* Ensure block display */
+        width: 100%; /* Full width to help centering */
+        margin: 0 auto; /* Center horizontally */
     }
     
     .scroll-arrow {
-        bottom: calc(var(--spacing-unit) * 1.5); /* Moved up */
+        bottom: calc(var(--spacing-unit) * 2.5); /* Moved up */
         width: 20px;
         height: 20px;
         border-width: 2px;
@@ -1219,11 +1224,13 @@ strong:hover {
     }
     
     .hero-content {
-        margin-bottom: calc(var(--spacing-unit) * 2); /* Reduced from 8 to 2 */
+        margin-bottom: calc(var(--spacing-unit) * 3); /* Adjusted to be consistent */
     }
     
     .hero-subtitle {
         font-size: 0.85em;
+        width: 100%;
+        margin: 0 auto;
     }
     
     .yc-attribution {
@@ -1236,7 +1243,7 @@ strong:hover {
     }
     
     .scroll-arrow {
-        bottom: calc(var(--spacing-unit) * 1); /* Moved up further */
+        bottom: calc(var(--spacing-unit) * 1.5); /* Adjusted position */
     }
 }
 
@@ -1272,12 +1279,18 @@ strong:hover {
     
     .hero-subtitle {
         font-size: 0.85em;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
     }
     
     .hero-content {
-        right: calc(var(--spacing-unit) * 1);
+        right: auto;
+        left: 0;
         bottom: calc(var(--spacing-unit) * 3);
-        max-width: 90%;
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
     }
     
     .scroll-arrow {
