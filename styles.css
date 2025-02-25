@@ -1011,7 +1011,7 @@ strong:hover {
     margin: 0;
     position: absolute;
     top: var(--spacing-unit);
-    left: var(--spacing-unit);
+    left: calc(var(--spacing-unit) * 2);
     background-color: transparent;
     transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
@@ -1116,7 +1116,7 @@ strong:hover {
     .hero-logo {
         width: 250px;
         top: calc(var(--spacing-unit) * 0.5);
-        left: calc(var(--spacing-unit) * 0.5);
+        left: calc(var(--spacing-unit) * 1);
     }
     
     .hero-title {
