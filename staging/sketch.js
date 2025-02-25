@@ -141,3 +141,38 @@ function startShootingStar() {
     animating = true;
   }
 }
+
+// Video lazy loading function
+function setupVideoLazyLoading() {
+  const videoContainers = document.querySelectorAll('.video-container');
+  
+  videoContainers.forEach(container => {
+    const placeholder = container.querySelector('.video-placeholder');
+    const video = container.querySelector('video');
+    
+    if (placeholder && video) {
+      placeholder.addEventListener('click', function() {
+        // Set the video source only when clicked
+        const sources = video.querySelectorAll('source');
+        sources.forEach(source => {
+          const dataSrc = source.getAttribute('data-src');
+          if (dataSrc) {
+            source.setAttribute('src', dataSrc);
+          }
+        });
+        
+        // Load and play the video
+        video.load();
+        video.play();
+        
+        // Hide the placeholder
+        placeholder.style.display = 'none';
+      });
+    }
+  });
+}
+
+// Call the function when the DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  setupVideoLazyLoading();
+});
