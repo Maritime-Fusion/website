@@ -955,3 +955,351 @@ strong:hover {
         align-self: flex-start;
     }
 }
+
+/* Background Video Container */
+.background-video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
+}
+
+/* Overlay for better text visibility */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+
+/* Hero section that appears over the video */
+.hero-section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--spacing-unit);
+    position: relative;
+    z-index: 1;
+}
+
+/* Adjust logo for hero section */
+.hero-logo {
+    width: 350px;
+    height: auto;
+    margin: 0;
+    position: absolute;
+    top: var(--spacing-unit);
+    left: var(--spacing-unit);
+    background-color: transparent;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+}
+
+.hero-content {
+    max-width: 800px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: calc(var(--spacing-unit) * 4);
+    right: calc(var(--spacing-unit) * 4);
+    text-align: right;
+    z-index: 5;
+}
+
+.hero-title {
+    font-size: 3.5em;
+    font-weight: 800;
+    margin-bottom: 0.5em;
+    color: white;
+}
+
+.hero-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5em;
+    margin-bottom: 0;
+    font-weight: 600;
+    padding: 0.5em 0;
+    background-color: transparent;
+    border-radius: 0;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* YC Attribution in bottom left */
+.yc-attribution {
+    position: absolute;
+    bottom: calc(var(--spacing-unit) * 4);
+    left: calc(var(--spacing-unit) * 2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5em;
+    font-weight: 600;
+    z-index: 5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.yc-logo {
+    height: 24px;
+    width: auto;
+}
+
+/* Replace text-based scroll indicator with subtle arrow */
+.scroll-arrow {
+    position: absolute;
+    bottom: calc(var(--spacing-unit) * 3.5);
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-left: 3px solid rgba(255, 255, 255, 0.8);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.8);
+    transform: translateX(-50%) rotate(-45deg);
+    animation: pulse-arrow 2s infinite;
+    z-index: 5;
+}
+
+@keyframes pulse-arrow {
+    0% {
+        opacity: 0.5;
+        transform: translateX(-50%) rotate(-45deg) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) rotate(-45deg) scale(1.1);
+    }
+    100% {
+        opacity: 0.5;
+        transform: translateX(-50%) rotate(-45deg) scale(1);
+    }
+}
+
+/* Main content starts after the video */
+.main-content {
+    position: relative;
+    z-index: 2;
+    background: 
+        radial-gradient(circle at 0% 0%, var(--gradient-start) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, var(--gradient-end) 0%, transparent 50%),
+        linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+    padding-top: var(--spacing-unit);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-logo {
+        width: 250px;
+        top: calc(var(--spacing-unit) * 0.5);
+        left: calc(var(--spacing-unit) * 0.5);
+    }
+    
+    .hero-title {
+        font-size: 2.5em;
+    }
+    
+    .hero-subtitle {
+        font-size: 1em;
+        padding: 0.4em 0;
+        letter-spacing: 0.04em;
+    }
+    
+    .hero-content {
+        right: calc(var(--spacing-unit) * 1);
+        bottom: calc(var(--spacing-unit) * 3);
+        max-width: 90%;
+    }
+    
+    .scroll-arrow {
+        bottom: calc(var(--spacing-unit) * 2);
+        width: 20px;
+        height: 20px;
+        border-width: 2px;
+    }
+    
+    .yc-attribution {
+        bottom: calc(var(--spacing-unit) * 3);
+        left: calc(var(--spacing-unit) * 1);
+        font-size: 1em;
+    }
+    
+    .yc-logo {
+        height: 20px;
+    }
+}
+
+.reactor-image {
+    width: 45%;
+    margin: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.1),
+        0 2px 6px rgba(0, 102, 204, 0.1);
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    flex-shrink: 0;
+    position: sticky;
+    top: var(--spacing-unit);
+    align-self: flex-start;
+}
+
+.reactor-image:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 16px 48px rgba(0, 0, 0, 0.15),
+        0 4px 12px rgba(0, 102, 204, 0.15);
+}
+
+@media (max-width: 768px) {
+    .reactor-image {
+        width: 85%;
+        margin: calc(var(--spacing-unit) * 2) auto;
+        position: relative;
+        top: initial;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2em;
+        padding: 0.4em 0;
+        letter-spacing: 0.04em;
+    }
+    
+    .hero-content {
+        right: calc(var(--spacing-unit) * 1);
+        bottom: calc(var(--spacing-unit) * 3);
+        max-width: 90%;
+    }
+    
+    .scroll-arrow {
+        bottom: calc(var(--spacing-unit) * 2);
+        width: 20px;
+        height: 20px;
+        border-width: 2px;
+    }
+}
+
+/* Get in Touch button */
+.get-in-touch-btn {
+    position: absolute;
+    top: var(--spacing-unit);
+    right: calc(var(--spacing-unit) * 4);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    padding: 0.6em 1.2em;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    text-decoration: none;
+    display: inline-block;
+    z-index: 10000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    max-width: 150px;
+    overflow: hidden;
+    transform: none;
+    /* Square border effect */
+}
+
+.get-in-touch-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-color: white;
+}
+
+.get-in-touch-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.get-in-touch-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.get-in-touch-btn:hover::before {
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-color: white;
+}
+
+.get-in-touch-btn::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    width: 60px;
+    height: 100%;
+    left: -100px;
+    top: 0;
+    transform: skewX(-45deg);
+    transition: all 0.6s ease;
+    z-index: 1;
+}
+
+.get-in-touch-btn:hover::after {
+    left: 150%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .get-in-touch-btn {
+        top: calc(var(--spacing-unit) * 0.5);
+        right: calc(var(--spacing-unit) * 1);
+        font-size: 0.9em;
+        padding: 0.5em 1em;
+        max-width: 120px;
+    }
+}
+
+/* Adjust the button position to ensure it stays in view */
+@media (max-width: 1200px) {
+    .get-in-touch-btn {
+        right: calc(var(--spacing-unit) * 2);
+    }
+}
+
+@media (min-width: 1201px) {
+    .get-in-touch-btn {
+        right: calc(var(--spacing-unit) * 4);
+    }
+}
