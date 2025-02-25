@@ -14,6 +14,16 @@
     font-style: normal;
 }
 
+html {
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 :root {
     --primary-color: #1a1a1a;
     --accent-color: #0066cc;
@@ -31,6 +41,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    width: 100%;
     background: 
         radial-gradient(circle at 0% 0%, var(--gradient-start) 0%, transparent 50%),
         radial-gradient(circle at 100% 100%, var(--gradient-end) 0%, transparent 50%),
@@ -1122,17 +1133,18 @@ strong:hover {
         justify-content: flex-start;
         padding-top: calc(var(--spacing-unit) * 5);
         overflow: hidden;
+        height: 90vh; /* Reduce height on mobile */
     }
     
     .background-video-container {
         width: 100%;
-        height: 100vh;
+        height: 90vh; /* Reduce height on mobile */
         overflow: hidden;
     }
     
     .background-video {
         width: 100%;
-        height: 100vh;
+        height: 90vh; /* Reduce height on mobile */
         object-fit: cover;
         min-width: 100%;
         min-height: 100%;
@@ -1152,7 +1164,7 @@ strong:hover {
         right: auto;
         padding: 0 calc(var(--spacing-unit) * 0.5);
         margin-top: auto;
-        margin-bottom: calc(var(--spacing-unit) * 10);
+        margin-bottom: calc(var(--spacing-unit) * 3); /* Reduced from 10 to 3 */
         text-align: center;
         max-width: 100%;
     }
@@ -1166,7 +1178,7 @@ strong:hover {
     }
     
     .scroll-arrow {
-        bottom: calc(var(--spacing-unit) * 2);
+        bottom: calc(var(--spacing-unit) * 1.5); /* Moved up */
         width: 20px;
         height: 20px;
         border-width: 2px;
@@ -1187,6 +1199,17 @@ strong:hover {
     .video-overlay {
         background: rgba(0, 0, 0, 0.6);
     }
+    
+    /* Reduce space between sections */
+    .main-content {
+        padding-top: calc(var(--spacing-unit) * 0.5);
+    }
+    
+    .content-wrapper {
+        gap: calc(var(--spacing-unit) * 0.5);
+        min-height: auto; /* Remove min-height for mobile */
+        padding-bottom: calc(var(--spacing-unit) * 0.5);
+    }
 }
 
 /* Additional breakpoint for very small screens */
@@ -1196,11 +1219,11 @@ strong:hover {
     }
     
     .hero-content {
-        margin-bottom: calc(var(--spacing-unit) * 8);
+        margin-bottom: calc(var(--spacing-unit) * 2); /* Reduced from 8 to 2 */
     }
     
     .hero-subtitle {
-        font-size: 1.0em;
+        font-size: 0.85em;
     }
     
     .yc-attribution {
@@ -1213,7 +1236,7 @@ strong:hover {
     }
     
     .scroll-arrow {
-        bottom: calc(var(--spacing-unit) * 1.5);
+        bottom: calc(var(--spacing-unit) * 1); /* Moved up further */
     }
 }
 
@@ -1242,7 +1265,7 @@ strong:hover {
 @media (max-width: 768px) {
     .reactor-image {
         width: 85%;
-        margin: calc(var(--spacing-unit) * 2) auto;
+        margin: calc(var(--spacing-unit) * 1) auto; /* Reduced from 2 to 1 */
         position: relative;
         top: initial;
     }
