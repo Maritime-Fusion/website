@@ -10,135 +10,151 @@
   <link rel="icon" href="logo-header.png" type="image/png">
 </head>
 <body>
-  <!-- Existing content -->
-  <img src="logo.png" alt="Maritime Fusion Logo" class="logo">
-  <div class="subtitle">Fusion reactors for ships</div>
+  <!-- Full-screen video background -->
+  <div class="video-background">
+    <video id="background-video" autoplay loop muted playsinline>
+      <!-- Video sources will be set via JavaScript for better performance -->
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <!-- Header with logo -->
+  <header class="site-header">
+    <img src="logo.png" alt="Maritime Fusion Logo" class="logo">
+  </header>
   
-  <div class="content-wrapper">
-    <div class="video-container">
-      <video controls preload="metadata" poster="reactor.png">
-        <!-- Use data-src for lazy loading -->
-        <source data-src="video_optimized.mp4" type="video/mp4">
-        <source data-src="video.webm" type="video/webm">
-        Your browser does not support the video tag.
-      </video>
-      <div class="video-placeholder">
-        <div class="play-button"></div>
-      </div>
-    </div>
-    <!-- Updated text content using Inter font -->
-    <div class="text-content">
-      <p>
-        <strong>Breakeven fusion is coming soon</strong>, but the first-of-a-kind (FOAK) reactors will be costly, 
-        high maintenance, and have low capacity factors, leading to <strong>5–10× higher electricity cost</strong> on the grid. 
-        These reactors also face significant physics challenges for steady-state operation, such as managing the <strong>first wall 
-        heat flux</strong> and mitigating <strong>nuclear activation</strong> of structural components that may require novel new materials to solve.
-      </p>
-      
-      <!-- Highlighted text to break up the paragraphs -->
-      <div class="highlight-text">
-        We are building the first fusion reactors for marine applications.
-      </div>
-      
-      <p>
-        Maritime Fusion is building a <strong>reactor for deployment on ships</strong> that alleviates the challenges that arise between breakeven and a 
-        commercially viable energy source. The market we're targeting requires <strong>15× less power, lower up-time, and costs 
-        the same as alternative fuels but without any emissions</strong>.
-      </p>
-      <p>
-        Since fusion does not use highly radioactive fuels or materials – unlike fission – we <strong>sidestep the vast majority of 
-        regulatory challenges and safety risks</strong> associated with nuclear energy.
-      </p>
-    </div>
-  </div>
-
-  <div class="content-wrapper secondary-panels">
-    <!-- Market Panel -->
-    <div class="panel market-panel">
-      <h2 class="panel-title">Why Ships?</h2>
-      
-      <div class="market-grid">
-        <div class="panel-section engineering">
-          <h3 class="panel-subtitle">Engineering Rational</h3>
-          <ul class="panel-list">
-            <li><strong>25MWe</strong> vs >100's MWe for grid</li>
-            <li><strong>JET-sized</strong> + <strong>HTS magnets</strong>
-            <li>Reduced material challenges</li>
-            <li>Doesn't require > 90% capacity factor for success</li>
-            <li><strong>Reduced tritium inventory</strong> and consumption</li>
-          </ul>
-        </div>
-
-        <div class="panel-section socioeconomic">
-          <h3 class="panel-subtitle">Socioeconomic Rational</h3>
-          <ul class="panel-list">
-            <li><strong>Eliminates bunker fuels</strong></li>
-            <li>Minimal regulatory hurdles, compared to fission</li>
-            <li><strong>No meltdown risk</strong></li>
-            <li>Reduced proliferation concerns</li>
-            <li>Higher energy density and less emmisions compared to 'clean' bunker fuels</li>
-          </ul>
+  <!-- Main content starts here -->
+  <div class="main-content">
+    <div class="subtitle">Fusion reactors for ships</div>
+    
+    <div class="content-wrapper">
+      <!-- Feature video (smaller version for content area) -->
+      <div class="video-container">
+        <video controls preload="metadata" poster="reactor.png">
+          <!-- Use data-src for lazy loading -->
+          <source data-src="video_optimized.mp4" type="video/mp4">
+          <source data-src="video.webm" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-placeholder">
+          <div class="play-button"></div>
         </div>
       </div>
-
-      <h2 class="panel-title">Who are we selling to?</h2>
       
-      <div class="market-segments">
-        <div class="market-segment">
-          <h3 class="segment-title">Commercial Shipping</h3>
-          <a href="https://www.vox.com/recode/22973218/container-shipping-industry-climate-change-emissions-maersk" class="segment-link">
-            Record-breaking demand for large container ships, creating unprecedented opportunity for sustainable propulsion technologies
-          </a>
-        </div>
-        <div class="market-segment">
-          <h3 class="segment-title">Defense</h3>
-          <a href="https://www.dla.mil/About-DLA/News/News-Article-View/Article/3842532/dods-need-for-a-transportable-energy-solution-the-promise-of-nuclear-power/" class="segment-link">
-            DOD's urgent need for transportable clean energy solutions accross the worlds oceans
-          </a>
-        </div>
-      </div>
-
-      <div class="ship-images">
-        <img src="cargo.jpg" alt="Cargo Ship" class="ship-image">
-        <img src="destroyer.jpg" alt="Destroyer" class="ship-image">
-      </div>
-    </div>
-
-    <!-- Team Panel -->
-    <div class="panel team-panel">
-      <h2 class="panel-title">Team</h2>
-      <div class="team-description">
-        <p>Our team brings <strong>over a decade of industry and research experience</strong> in plasma physics, nuclear engineering, and electrical engineering with backgrounds at <strong>SpaceX, Tesla, Columbia University, and University of Pennsylvania</strong>.</p>
+      <!-- Updated text content using Inter font -->
+      <div class="text-content">
+        <p>
+          <strong>Breakeven fusion is coming soon</strong>, but the first-of-a-kind (FOAK) reactors will be costly, 
+          high maintenance, and have low capacity factors, leading to <strong>5–10× higher electricity cost</strong> on the grid. 
+          These reactors also face significant physics challenges for steady-state operation, such as managing the <strong>first wall 
+          heat flux</strong> and mitigating <strong>nuclear activation</strong> of structural components that may require novel new materials to solve.
+        </p>
         
-        <p>We first met at SpaceX while conducting radiation tests for Starship electronics, and later worked together at Tesla on Cybertruck and Optimus.</p>
+        <!-- Highlighted text to break up the paragraphs -->
+        <div class="highlight-text">
+          We are building the first fusion reactors for marine applications.
+        </div>
+        
+        <p>
+          Maritime Fusion is building a <strong>reactor for deployment on ships</strong> that alleviates the challenges that arise between breakeven and a 
+          commercially viable energy source. The market we're targeting requires <strong>15× less power, lower up-time, and costs 
+          the same as alternative fuels but without any emissions</strong>.
+        </p>
+        <p>
+          Since fusion does not use highly radioactive fuels or materials – unlike fission – we <strong>sidestep the vast majority of 
+          regulatory challenges and safety risks</strong> associated with nuclear energy.
+        </p>
       </div>
-      <div class="company-logos">
-        <img src="spacex.png" alt="SpaceX" class="company-logo">
-        <img src="tesla.png" alt="Tesla" class="company-logo">
-        <img src="columbia.png" alt="Columbia University" class="company-logo">
-        <img src="penn.png" alt="University of Pennsylvania" class="company-logo">
+    </div>
+
+    <div class="content-wrapper secondary-panels">
+      <!-- Market Panel -->
+      <div class="panel market-panel">
+        <h2 class="panel-title">Why Ships?</h2>
+        
+        <div class="market-grid">
+          <div class="panel-section engineering">
+            <h3 class="panel-subtitle">Engineering Rational</h3>
+            <ul class="panel-list">
+              <li><strong>25MWe</strong> vs >100's MWe for grid</li>
+              <li><strong>JET-sized</strong> + <strong>HTS magnets</strong>
+              <li>Reduced material challenges</li>
+              <li>Doesn't require > 90% capacity factor for success</li>
+              <li><strong>Reduced tritium inventory</strong> and consumption</li>
+            </ul>
+          </div>
+
+          <div class="panel-section socioeconomic">
+            <h3 class="panel-subtitle">Socioeconomic Rational</h3>
+            <ul class="panel-list">
+              <li><strong>Eliminates bunker fuels</strong></li>
+              <li>Minimal regulatory hurdles, compared to fission</li>
+              <li><strong>No meltdown risk</strong></li>
+              <li>Reduced proliferation concerns</li>
+              <li>Higher energy density and less emmisions compared to 'clean' bunker fuels</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="panel-title">Who are we selling to?</h2>
+        
+        <div class="market-segments">
+          <div class="market-segment">
+            <h3 class="segment-title">Commercial Shipping</h3>
+            <a href="https://www.vox.com/recode/22973218/container-shipping-industry-climate-change-emissions-maersk" class="segment-link">
+              Record-breaking demand for large container ships, creating unprecedented opportunity for sustainable propulsion technologies
+            </a>
+          </div>
+          <div class="market-segment">
+            <h3 class="segment-title">Defense</h3>
+            <a href="https://www.dla.mil/About-DLA/News/News-Article-View/Article/3842532/dods-need-for-a-transportable-energy-solution-the-promise-of-nuclear-power/" class="segment-link">
+              DOD's urgent need for transportable clean energy solutions accross the worlds oceans
+            </a>
+          </div>
+        </div>
+
+        <div class="ship-images">
+          <img src="cargo.jpg" alt="Cargo Ship" class="ship-image">
+          <img src="destroyer.jpg" alt="Destroyer" class="ship-image">
+        </div>
       </div>
-      <img src="team.png" alt="Our Team" class="team-image">
-    </div>
-  </div>
 
-  <!-- Add the "More coming soon" section -->
-  <div class="key-points">
-    <div class="key-point">THIS IS FUSION, NOT FISSION. NO URANIUM INVOLVED.</div>
-    <div class="key-point">YES, A TOKAMAK FITS ON A SHIP.</div>
-    <span class="coming-soon-text">More coming soon</span>
-    <div class="pulse-dots">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+      <!-- Team Panel -->
+      <div class="panel team-panel">
+        <h2 class="panel-title">Team</h2>
+        <div class="team-description">
+          <p>Our team brings <strong>over a decade of industry and research experience</strong> in plasma physics, nuclear engineering, and electrical engineering with backgrounds at <strong>SpaceX, Tesla, Columbia University, and University of Pennsylvania</strong>.</p>
+          
+          <p>We first met at SpaceX while conducting radiation tests for Starship electronics, and later worked together at Tesla on Cybertruck and Optimus.</p>
+        </div>
+        <div class="company-logos">
+          <img src="spacex.png" alt="SpaceX" class="company-logo">
+          <img src="tesla.png" alt="Tesla" class="company-logo">
+          <img src="columbia.png" alt="Columbia University" class="company-logo">
+          <img src="penn.png" alt="University of Pennsylvania" class="company-logo">
+        </div>
+        <img src="team.png" alt="Our Team" class="team-image">
+      </div>
     </div>
-  </div>
 
-  <div class="contact">
-    Contact: <a href="mailto:founders@maritimefusion.com">founders@maritimefusion.com</a>
+    <!-- Add the "More coming soon" section -->
+    <div class="key-points">
+      <div class="key-point">THIS IS FUSION, NOT FISSION. NO URANIUM INVOLVED.</div>
+      <div class="key-point">YES, A TOKAMAK FITS ON A SHIP.</div>
+      <span class="coming-soon-text">More coming soon</span>
+      <div class="pulse-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+
+    <div class="contact">
+      Contact: <a href="mailto:founders@maritimefusion.com">founders@maritimefusion.com</a>
+    </div>
+    <img src="yc.png" alt="YC logo" class="flag">
+    <footer>Backed by Y Combinator</footer>
   </div>
-  <img src="yc.png" alt="YC logo" class="flag">
-  <footer>Backed by Y Combinator</footer>
 
   <!-- p5.js library -->
   <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>

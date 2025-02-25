@@ -142,6 +142,39 @@ function startShootingStar() {
   }
 }
 
+// Setup both background video and content video
+function setupVideos() {
+  // Setup content area video with lazy loading
+  setupVideoLazyLoading();
+  
+  // Setup background video
+  const backgroundVideo = document.getElementById('background-video');
+  if (backgroundVideo) {
+    // Create and append source elements
+    const mp4Source = document.createElement('source');
+    mp4Source.setAttribute('src', 'video_optimized.mp4');
+    mp4Source.setAttribute('type', 'video/mp4');
+    
+    const webmSource = document.createElement('source');
+    webmSource.setAttribute('src', 'video.webm');
+    webmSource.setAttribute('type', 'video/webm');
+    
+    // Append sources to video element
+    backgroundVideo.appendChild(mp4Source);
+    backgroundVideo.appendChild(webmSource);
+    
+    // Load and play the video
+    backgroundVideo.load();
+    
+    // Start playing when ready
+    backgroundVideo.addEventListener('canplaythrough', function() {
+      backgroundVideo.play().catch(error => {
+        console.log('Autoplay prevented:', error);
+      });
+    });
+  }
+}
+
 // Video lazy loading function
 function setupVideoLazyLoading() {
   const videoContainers = document.querySelectorAll('.video-container');
@@ -172,7 +205,14 @@ function setupVideoLazyLoading() {
   });
 }
 
-// Call the function when the DOM is loaded
+// Call the functions when the DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  setupVideoLazyLoading();
+  setupVideos();
+  
+  // Trigger shooting star occasionally
+  setInterval(function() {
+    if (Math.random() < 0.3 && !animating) {
+      startShootingStar();
+    }
+  }, 8000);
 });

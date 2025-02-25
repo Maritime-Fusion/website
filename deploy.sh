@@ -11,6 +11,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Define staging and production directories
 STAGING_DIR="${SCRIPT_DIR}/staging"
 PROD_DIR="${SCRIPT_DIR}"
+BACKUP_DIR="${SCRIPT_DIR}/backup_$(date +%Y%m%d_%H%M%S)"
 
 # Check if staging directory exists
 if [ ! -d "$STAGING_DIR" ]; then
@@ -18,7 +19,16 @@ if [ ! -d "$STAGING_DIR" ]; then
     exit 1
 fi
 
-# Step 1: Check for and optimize video if it exists
+# Step 1: Create a backup of production files
+echo "Creating backup of production files..."
+mkdir -p "${BACKUP_DIR}"
+
+# Backup important production files
+find "${PROD_DIR}" -maxdepth 1 -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.jpg" -o -name "*.png" -o -name "*.mp4" -o -name "*.webm" \) -exec cp {} "${BACKUP_DIR}/" \;
+
+echo "Backup created at: ${BACKUP_DIR}"
+
+# Step 2: Check for and optimize video if it exists
 VIDEO_FILE="${STAGING_DIR}/video.mp4"
 if [ -f "$VIDEO_FILE" ]; then
     echo "Video file found. Optimizing video..."
@@ -43,7 +53,7 @@ else
     echo "No video.mp4 found in staging. Skipping video optimization."
 fi
 
-# Step 2: Deploy from staging to production
+# Step 3: Deploy from staging to production
 echo "Moving files from staging to production..."
 
 # Copy all files from staging to production, excluding certain files/directories
@@ -53,10 +63,13 @@ rsync -av --exclude=".git/" \
          --exclude="CNAME" \
          --exclude="LICENSE" \
          --exclude="staging/" \
+         --exclude="backup_*/" \
          "$STAGING_DIR/" "$PROD_DIR/"
 
 echo ""
 echo "=== Deployment Complete ==="
 echo "Files successfully copied from staging to production!"
 echo ""
-echo "To view changes, open index.html in your browser." 
+echo "To view changes, open index.html in your browser."
+echo ""
+echo "If you need to restore from backup, files are available at: ${BACKUP_DIR}" 
