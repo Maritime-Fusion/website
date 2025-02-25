@@ -15,7 +15,17 @@
   <div class="subtitle">Fusion reactors for ships</div>
   
   <div class="content-wrapper">
-    <img src="reactor.png" alt="Reactor" class="flag">
+    <div class="video-container">
+      <video controls preload="metadata" poster="reactor.png">
+        <!-- Use data-src for lazy loading -->
+        <source data-src="video_optimized.mp4" type="video/mp4">
+        <source data-src="video.webm" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-placeholder">
+        <div class="play-button"></div>
+      </div>
+    </div>
     <!-- Updated text content using Inter font -->
     <div class="text-content">
       <p>
