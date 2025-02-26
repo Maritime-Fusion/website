@@ -117,6 +117,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: var(--spacing-unit);
     max-width: 1400px;
     margin: 0 auto;
@@ -129,7 +130,8 @@ img {
 @media (min-width: 1024px) {
     .content-wrapper {
         flex-direction: row;
-        align-items: stretch;
+        align-items: center;
+        justify-content: center;
         gap: 0;
         padding: 0 calc(var(--spacing-unit) * 2);
         overflow: visible;
@@ -157,13 +159,13 @@ img {
     }
 
     .reactor-image {
-        width: 50%;
-        margin: 0;
+        width: 40%;
+        margin: auto 0;
         position: relative;
         top: auto;
-        align-self: stretch;
+        align-self: center;
         height: auto;
-        object-fit: cover;
+        object-fit: contain;
         padding-right: calc(var(--spacing-unit));
     }
 }
@@ -1347,16 +1349,17 @@ strong:hover {
 }
 
 .reactor-image {
-    width: 45%;
-    margin: 0;
+    width: 40%;
+    margin: 0 auto;
     border-radius: 0;
     overflow: visible;
     box-shadow: none;
     transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     flex-shrink: 0;
-    position: sticky;
-    top: var(--spacing-unit);
-    align-self: flex-start;
+    position: relative;
+    display: block;
+    top: 0;
+    align-self: center;
     height: fit-content;
 }
 
@@ -1367,13 +1370,13 @@ strong:hover {
 
 @media (min-width: 1024px) {
     .reactor-image {
-        width: 50%;
-        margin: 0;
+        width: 40%;
+        margin: auto 0;
         position: relative;
         top: auto;
-        align-self: stretch;
+        align-self: center;
         height: auto;
-        object-fit: cover;
+        object-fit: contain;
         padding-right: calc(var(--spacing-unit));
     }
     
@@ -1388,7 +1391,7 @@ strong:hover {
 
 @media (max-width: 768px) {
     .reactor-image {
-        width: 85%;
+        width: 70%;
         margin: calc(var(--spacing-unit) * 1) auto;
         position: relative;
         top: initial;
