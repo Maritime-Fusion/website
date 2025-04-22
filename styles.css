@@ -1607,10 +1607,11 @@ strong:hover {
     background: linear-gradient(135deg, rgba(0, 102, 204, 0.05), rgba(0, 102, 204, 0.02));
     border-radius: 20px;
     padding: calc(var(--spacing-unit) * 2);
-    margin: calc(var(--spacing-unit) * 2) 0;
+    margin: calc(var(--spacing-unit) * 2) auto;
     text-align: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
+    max-width: 1200px;
 }
 
 .hiring-panel:hover {
@@ -1666,7 +1667,7 @@ strong:hover {
 @media (max-width: 768px) {
     .hiring-panel {
         padding: var(--spacing-unit);
-        margin: var(--spacing-unit) 0;
+        margin: var(--spacing-unit) 15px;
     }
 
     .hiring-description {
