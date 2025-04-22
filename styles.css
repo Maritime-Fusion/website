@@ -1594,14 +1594,89 @@ strong:hover {
 }
 
 .team-image-container {
-    margin-top: auto;
-    display: flex;
-    align-items: flex-end;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     position: relative;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    min-height: 420px; /* Added to ensure enough vertical space */
-    justify-content: center; /* Center the image horizontally */
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+/* Hiring Panel Styles */
+.hiring-panel {
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.05), rgba(0, 102, 204, 0.02));
+    border-radius: 20px;
+    padding: calc(var(--spacing-unit) * 2);
+    margin: calc(var(--spacing-unit) * 2) 0;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.hiring-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 102, 204, 0.1);
+}
+
+.hiring-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hiring-description {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin: calc(var(--spacing-unit)) 0;
+    color: var(--text-color);
+}
+
+.hiring-cta {
+    margin-top: calc(var(--spacing-unit) * 1.5);
+}
+
+.hiring-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent-color);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
+}
+
+.hiring-button:hover {
+    background: #0052a3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 102, 204, 0.3);
+}
+
+.hiring-button .arrow {
+    transition: transform 0.3s ease;
+}
+
+.hiring-button:hover .arrow {
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .hiring-panel {
+        padding: var(--spacing-unit);
+        margin: var(--spacing-unit) 0;
+    }
+
+    .hiring-description {
+        font-size: 1.1em;
+    }
+
+    .hiring-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
 }
 
 /* Scroll-triggered animations */
